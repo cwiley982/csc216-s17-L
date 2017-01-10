@@ -7,7 +7,15 @@ import java.util.ArrayList;
 import edu.ncsu.csc216.pack_scheduler.user.Student;
 
 public class StudentRecordIO {
-
+	
+	public StudentRecordIO(){
+		
+	}
+	
+	private static Student processStudent(String studentInfo){
+		
+		return null; //For now
+	}
 	public static ArrayList<Student> readStudentRecords(String fileName) throws FileNotFoundException {
 		// TODO Auto-generated method stub
 		return null;
