@@ -19,7 +19,7 @@ public class Student {
 		setMaxCredits(MAX_CREDITS);
 	}
 	public Student(String firstName, String lastName, String id, String email, String password) {
-		this(firstName,lastName,id,email,password,0);
+		this(firstName,lastName,id,email,password,MAX_CREDITS);
 	}
 	
 
