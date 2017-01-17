@@ -27,34 +27,63 @@ public class Student {
 		return firstName;
 	}
 	public void setFirstName(String firstName) {
+		if (firstName == null || firstName.equals("")) {
+			throw new IllegalArgumentException();
+		}
 		this.firstName = firstName;
 	}
 	public String getLastName() {
 		return lastName;
 	}
 	public void setLastName(String lastName) {
+		if (lastName == null || lastName.equals("")) {
+			throw new IllegalArgumentException();
+		}
 		this.lastName = lastName;
 	}
 	public String getId() {
 		return id;
 	}
 	private void setId(String id) {
+		if (id == null || id.equals("")) {
+			throw new IllegalArgumentException();
+		}
 		this.id = id;
 	}
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
+		if (email == null || email.equals("") ) {
+			throw new IllegalArgumentException();
+		}
+		if (email.indexOf("@") == -1 || email.indexOf(".") == -1) {
+			throw new IllegalArgumentException();
+		}
+		String a = "";
+		for (int i = email.length() - 1 ; i >= 0; i--) {
+			a += email.charAt(i);
+		}
+		if (a.indexOf(".") > a.indexOf("@")) {
+			throw new IllegalArgumentException();
+		}
+		
 		this.email = email;
 	}
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
+		if (password == null || password.equals("")) {
+			throw new IllegalArgumentException();
+		}
 		this.password = password;
 	}
 
 	public void setMaxCredits(int maxCredits) {
+		if (maxCredits < 3 || maxCredits > 18) {
+			throw new IllegalArgumentException();
+		}
 		this.maxCredits = maxCredits;
 	}
 	public static int getMaxCredits() {
@@ -114,10 +143,6 @@ public class Student {
 	public String toString() {
 		return firstName + "," + lastName + "," + id + "," + email + "," + password +"," + maxCredits;
 	}
-	
-	
-	
-	
 	
 	
 
