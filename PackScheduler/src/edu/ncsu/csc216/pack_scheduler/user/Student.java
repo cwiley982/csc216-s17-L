@@ -119,9 +119,21 @@ public class Student {
 		}
 		this.id = id;
 	}
+	
+	/**
+	 * Gets the students email
+	 * 
+	 * @return email of student
+	 */
 	public String getEmail() {
 		return email;
 	}
+	
+	/**
+	 * Sets the students email
+	 * 
+	 * @param email of the student
+	 */
 	public void setEmail(String email) {
 		if (email == null || email.equals("") ) {
 			throw new IllegalArgumentException();
@@ -139,9 +151,21 @@ public class Student {
 		
 		this.email = email;
 	}
+	
+	/**
+	 * Gets the student's password
+	 * 
+	 * @return student's password
+	 */
 	public String getPassword() {
 		return password;
 	}
+	
+	/**
+	 * Sets the student's password
+	 * 
+	 * @param password for the student's account
+	 */
 	public void setPassword(String password) {
 		if (password == null || password.equals("")) {
 			throw new IllegalArgumentException();
@@ -149,16 +173,33 @@ public class Student {
 		this.password = password;
 	}
 
+	/**
+	 * Sets the max credits a student can take
+	 * 
+	 * @param maxCredits the student can take
+	 */
 	public void setMaxCredits(int maxCredits) {
 		if (maxCredits < 3 || maxCredits > 18) {
 			throw new IllegalArgumentException();
 		}
 		this.maxCredits = maxCredits;
 	}
+	
+	/**
+	 * Gets the max credits for the student
+	 * 
+	 * @return max credits a student can take
+	 */
 	public static int getMaxCredits() {
 		return MAX_CREDITS;
 	}
+	
 	@Override
+	/**
+	 * Hashes the password
+	 * 
+	 * @return the hashed password
+	 */
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -170,7 +211,13 @@ public class Student {
 		result = prime * result + maxCredits;
 		return result;
 	}
+	
 	@Override
+	/**
+	 * Determines if one field is equal to another field
+	 * 
+	 * @return boolean - true if fields are equal, false otherwise
+	 */
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -208,7 +255,13 @@ public class Student {
 			return false;
 		return true;
 	}
+	
 	@Override
+	/**
+	 * Creates a string containing fields for the student object
+	 * 
+	 * @return the string containing student information
+	 */
 	public String toString() {
 		return firstName + "," + lastName + "," + id + "," + email + "," + password +"," + maxCredits;
 	}
