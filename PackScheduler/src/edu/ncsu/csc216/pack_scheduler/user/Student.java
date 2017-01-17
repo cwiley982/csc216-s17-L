@@ -1,15 +1,40 @@
 package edu.ncsu.csc216.pack_scheduler.user;
 
+/**
+ * Creates a student with all info neccesary
+ * 
+ * @author Caitlyn Wiley
+ * @author Kaiwen Li
+ * @author Spencer Otten
+ *
+ */
 public class Student {
 
+	/** First name of the student */
 	private String firstName;
+	/** Last name of the student */
 	private String lastName;
+	/** Student's unity id */
 	private String id;
+	/** Student's email */
 	private String email;
+	/** Student's password */
 	private String password;
+	/** Max credits student can take */
 	private int maxCredits;
+	/** Default max credits */
 	public static final int MAX_CREDITS = 18;
 	
+	/**
+	 * Creates a student with specified max credits
+	 * 
+	 * @param firstName first name of student
+	 * @param lastName last name of student
+	 * @param id unity id of student
+	 * @param email email of student
+	 * @param password student's password
+	 * @param maxCredits max credits for student
+	 */
 	public Student(String firstName, String lastName, String id, String email, String password, int maxCredits) {
 		setFirstName(firstName);
 		setLastName(lastName);
@@ -18,32 +43,76 @@ public class Student {
 		setPassword(password);
 		setMaxCredits(MAX_CREDITS);
 	}
+	
+	/**
+	 * Creates a student with the default max credits
+	 * 
+	 * @param firstName first name of student
+	 * @param lastName last name of student
+	 * @param id unity id of student
+	 * @param email email of student
+	 * @param password student's password
+	 */
 	public Student(String firstName, String lastName, String id, String email, String password) {
 		this(firstName,lastName,id,email,password,MAX_CREDITS);
 	}
 	
-
+	/**
+	 * Gets the student's first name
+	 * 
+	 * @return first name of student
+	 */
 	public String getFirstName() {
 		return firstName;
 	}
+	
+	/**
+	 * Sets the first name of the student
+	 * 
+	 * @param firstName of the student
+	 */
 	public void setFirstName(String firstName) {
 		if (firstName == null || firstName.equals("")) {
 			throw new IllegalArgumentException();
 		}
 		this.firstName = firstName;
 	}
+	
+	/**
+	 * Gets the last name of the student
+	 * 
+	 * @return student's last name
+	 */
 	public String getLastName() {
 		return lastName;
 	}
+	
+	/**
+	 * Sets the student's last name
+	 * 
+	 * @param lastName of the student
+	 */
 	public void setLastName(String lastName) {
 		if (lastName == null || lastName.equals("")) {
 			throw new IllegalArgumentException();
 		}
 		this.lastName = lastName;
 	}
+	
+	/**
+	 * Gets the unity id of the student
+	 * 
+	 * @return id of the student
+	 */
 	public String getId() {
 		return id;
 	}
+	
+	/**
+	 * Sets the student's unity id
+	 * 
+	 * @param id of the student
+	 */
 	private void setId(String id) {
 		if (id == null || id.equals("")) {
 			throw new IllegalArgumentException();
