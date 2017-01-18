@@ -19,20 +19,22 @@ import edu.ncsu.csc216.pack_scheduler.user.Student;
  * @author Sepncer Otten
  */
 public class StudentRecordIO {
-	
+
 	/**
 	 * Blank constructor for each record
 	 */
-	public StudentRecordIO(){
-		
+	public StudentRecordIO() {
+
 	}
 
 	/**
 	 * Reads a record of students and lists students in an array list
 	 * 
-	 * @param fileName the file to be read
+	 * @param fileName
+	 *            the file to be read
 	 * @return list of students
-	 * @throws FileNotFoundException if file cannot be accessed
+	 * @throws FileNotFoundException
+	 *             if file cannot be accessed
 	 */
 	public static ArrayList<Student> readStudentRecords(String fileName) throws FileNotFoundException {
 		Scanner fileReader = new Scanner(new File(fileName));
@@ -46,7 +48,7 @@ public class StudentRecordIO {
 					if (student.getId().equals(c.getId())) {
 						// it's a duplicate
 						duplicate = true;
-					} 
+					}
 				}
 				if (!duplicate) {
 					students.add(student);
@@ -62,9 +64,12 @@ public class StudentRecordIO {
 	/**
 	 * Writes the list of students in the array to a file
 	 * 
-	 * @param fileName file to write to
-	 * @param studentDirectory array list of students
-	 * @throws IOException if file can't be written to
+	 * @param fileName
+	 *            file to write to
+	 * @param studentDirectory
+	 *            array list of students
+	 * @throws IOException
+	 *             if file can't be written to
 	 */
 	public static void writeStudentRecords(String fileName, ArrayList<Student> studentDirectory) throws IOException {
 		PrintStream writer = new PrintStream(new File(fileName));
@@ -76,9 +81,11 @@ public class StudentRecordIO {
 	}
 
 	/**
-	 * Reads a line from the file and creates a new student if all fields contain valid input
+	 * Reads a line from the file and creates a new student if all fields
+	 * contain valid input
 	 * 
-	 * @param studentInfo line from file
+	 * @param studentInfo
+	 *            line from file
 	 * @return Student created with info from string
 	 */
 	private static Student processStudent(String studentInfo) {
