@@ -1,7 +1,7 @@
 package edu.ncsu.csc216.pack_scheduler.user;
 
 /**
- * Creates a student with all info neccesary
+ * Creates a student with all info necessary
  * 
  * @author Caitlyn Wiley
  * @author Kaiwen Li
@@ -53,16 +53,11 @@ public class Student {
 	/**
 	 * Creates a student with the default max credits
 	 * 
-	 * @param firstName
-	 *            first name of student
-	 * @param lastName
-	 *            last name of student
-	 * @param id
-	 *            unity id of student
-	 * @param email
-	 *            email of student
-	 * @param password
-	 *            student's password
+	 * @param firstName first name of student
+	 * @param lastName last name of student
+	 * @param id unity id of student
+	 * @param email email of student
+	 * @param password student's password
 	 */
 	public Student(String firstName, String lastName, String id, String email, String password) {
 		this(firstName, lastName, id, email, password, MAX_CREDITS);
@@ -80,8 +75,7 @@ public class Student {
 	/**
 	 * Sets the first name of the student
 	 * 
-	 * @param firstName
-	 *            of the student
+	 * @param firstName of the student
 	 */
 	public void setFirstName(String firstName) {
 		if (firstName == null || firstName.equals("")) {
@@ -102,8 +96,7 @@ public class Student {
 	/**
 	 * Sets the student's last name
 	 * 
-	 * @param lastName
-	 *            of the student
+	 * @param lastName of the student
 	 */
 	public void setLastName(String lastName) {
 		if (lastName == null || lastName.equals("")) {

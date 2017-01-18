@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -54,7 +53,7 @@ public class StudentRecordIO {
 					students.add(student);
 				}
 			} catch (IllegalArgumentException | NullPointerException e) {
-
+				//skip the line
 			}
 		}
 		fileReader.close();
@@ -110,7 +109,7 @@ public class StudentRecordIO {
 
 			}
 		} catch (NoSuchElementException e) {
-
+			//skip the line
 		}
 		return s;
 	}
