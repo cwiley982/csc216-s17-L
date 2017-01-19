@@ -43,8 +43,8 @@ public class StudentRecordIO {
 				Student student = processStudent(fileReader.nextLine());
 				boolean duplicate = false;
 				for (int i = 0; i < students.size(); i++) {
-					Student c = students.get(i);
-					if (student.getId().equals(c.getId())) {
+					Student s = students.get(i);
+					if (student.getId().equals(s.getId())) {
 						// it's a duplicate
 						duplicate = true;
 					}
@@ -56,6 +56,7 @@ public class StudentRecordIO {
 				//skip the line
 			}
 		}
+
 		fileReader.close();
 		return students;
 	}
@@ -98,15 +99,14 @@ public class StudentRecordIO {
 			String id = info.next();
 			String email = info.next();
 			String password = info.next();
-			try {
+			
+			if (info.hasNextInt()) {
 				int maxCredits = info.nextInt();
 				info.close();
 				s = new Student(firstName, lastName, id, email, password, maxCredits);
-
-			} catch (NoSuchElementException e) {
+			} else {
 				info.close();
 				s = new Student(firstName, lastName, id, email, password);
-
 			}
 		} catch (NoSuchElementException e) {
 			//skip the line
