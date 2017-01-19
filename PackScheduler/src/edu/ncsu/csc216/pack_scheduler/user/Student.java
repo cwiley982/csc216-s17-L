@@ -47,7 +47,7 @@ public class Student {
 		setId(id);
 		setEmail(email);
 		setPassword(password);
-		setMaxCredits(MAX_CREDITS);
+		setMaxCredits(maxCredits);
 	}
 
 	/**
