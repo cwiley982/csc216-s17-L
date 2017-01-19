@@ -200,8 +200,8 @@ public class Student {
 	 * 
 	 * @return max credits a student can take
 	 */
-	public static int getMaxCredits() {
-		return MAX_CREDITS;
+	public int getMaxCredits() {
+		return maxCredits;
 	}
 
 	@Override
