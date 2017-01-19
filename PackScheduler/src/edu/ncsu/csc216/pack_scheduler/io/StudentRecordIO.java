@@ -15,7 +15,7 @@ import edu.ncsu.csc216.pack_scheduler.user.Student;
  * 
  * @author Caitlyn Wiley
  * @author Kaiwen Li
- * @author Sepncer Otten
+ * @author Spencer Otten
  */
 public class StudentRecordIO {
 
