@@ -1,12 +1,14 @@
 package edu.ncsu.csc216.pack_scheduler.io;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+
 
 import edu.ncsu.csc216.pack_scheduler.user.Student;
 
@@ -36,7 +38,7 @@ public class StudentRecordIO {
 	 *             if file cannot be accessed
 	 */
 	public static ArrayList<Student> readStudentRecords(String fileName) throws FileNotFoundException {
-		Scanner fileReader = new Scanner(new File(fileName));
+		Scanner fileReader = new Scanner(new FileInputStream(fileName));
 		ArrayList<Student> students = new ArrayList<Student>();
 		while (fileReader.hasNextLine()) {
 			try {
