@@ -21,12 +21,6 @@ import edu.ncsu.csc216.pack_scheduler.user.Student;
  */
 public class StudentRecordIO {
 
-	/**
-	 * Blank constructor for each record
-	 */
-	public StudentRecordIO() {
-
-	}
 
 	/**
 	 * Reads a record of students and lists students in an array list
