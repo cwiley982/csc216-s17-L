@@ -231,7 +231,7 @@ public class StudentTest {
 	public void testEqualsObject() {
 		Student s1 = new Student(firstName, lastName, id, email, password, MAX_CREDITS); 
 		Student s2 = new Student(firstName, lastName, id, email, password, MAX_CREDITS); 
-		Student s3 = new Student(firstName, lastName, id, email, password, 15); 
+		Student s3 = new Student(firstName, lastName, id, email, password, 12); 
 		Student s4 = new Student(firstName, lastName, id, email, "123", MAX_CREDITS); 
 		Student s5 = new Student(firstName, lastName, id, "kli11@ncsu.edu", password, MAX_CREDITS); 
 		Student s6 = new Student(firstName, lastName, "kli11", email, password, MAX_CREDITS); 
@@ -254,7 +254,25 @@ public class StudentTest {
 
 	@Test
 	public void testHashCode() {
-		fail("Not yet implemented");
+		Student s1 = new Student(firstName, lastName, id, email, password, MAX_CREDITS); 
+		Student s2 = new Student(firstName, lastName, id, email, password, MAX_CREDITS); 
+		Student s3 = new Student(firstName, lastName, id, email, password, 12); 
+		Student s4 = new Student(firstName, lastName, id, email, "123", MAX_CREDITS); 
+		Student s5 = new Student(firstName, lastName, id, "kli11@ncsu.edu", password, MAX_CREDITS); 
+		Student s6 = new Student(firstName, lastName, "kli11", email, password, MAX_CREDITS); 
+		Student s7 = new Student(firstName, "Li", id, email, password, MAX_CREDITS); 
+		Student s8 = new Student("Kevin", lastName, id, email, password, MAX_CREDITS); 
+		
+		
+		assertEquals(s1.hashCode(),s2.hashCode());
+		
+		assertNotEquals(s1.hashCode(), s3.hashCode());
+		assertNotEquals(s1.hashCode(), s4.hashCode());
+		assertNotEquals(s1.hashCode(), s5.hashCode());
+		assertNotEquals(s1.hashCode(), s6.hashCode());
+		assertNotEquals(s1.hashCode(), s7.hashCode());
+		assertNotEquals(s1.hashCode(), s8.hashCode());
+		
 	}
 
 }
