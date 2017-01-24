@@ -204,7 +204,7 @@ public class StudentTest {
 			s = new Student(firstName, lastName, id, email, password, 19);
 			fail();
 		} catch (IllegalArgumentException e) {
-			assertNull(s); 
+			assertNull(s);
 		}
 	}
 
