@@ -24,7 +24,11 @@ public class StudentRecordIOTest {
 	
 	private String hashPW;
 	private static final String HASH_ALGORITHM = "SHA-256";
-
+	
+	private final String s1 = "Zahir,King,zking,orci.Donec@ametmassaQuisque.com,0ÉRú±\"ÃùuŸ¦Ù\7X²F´şâ9•{-OîFâapÄ,15";
+	private final String s2 = "Cassandra,Schwartz,cschwartz,semper@imperdietornare.co.uk,0ÉRú±\"ÃùuŸ¦Ù\7X²F´şâ9•{-OîFâapÄ,4";
+	private final String s3 = "Shannon,Hansen,shansen,convallis.est.vitae@arcu.ca,0ÉRú±\"ÃùuŸ¦Ù\7X²F´şâ9•{-OîFâapÄ,14";
+	
 	@Before
 	public void setUp() {
 	    try {
