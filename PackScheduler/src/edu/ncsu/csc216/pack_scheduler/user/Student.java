@@ -56,7 +56,7 @@ public class Student {
 	 * @param firstName first name of student
 	 * @param lastName last name of student
 	 * @param id unity id of student
-	 * @param email email of student
+	 * @param email email of student 
 	 * @param password student's password
 	 */
 	public Student(String firstName, String lastName, String id, String email, String password) {
