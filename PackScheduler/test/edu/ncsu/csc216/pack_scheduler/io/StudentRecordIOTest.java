@@ -16,18 +16,28 @@ import org.junit.Test;
 import edu.ncsu.csc216.pack_scheduler.user.Student;
 
 
+
 public class StudentRecordIOTest {
-	/** Valid course records */
-	private final String validTestFile = " test-files/student_records.txt";
-	/** Invalid course records */
-	private final String invalidTestFile = " test-files/invalid_student_records.txt";
+	/** Valid student records */
+	private final String validTestFile = "test-files/student_records.txt";
+	/** Invalid student records */
+	private final String invalidTestFile = "test-files/invalid_student_records.txt";
 	
 	private String hashPW;
 	private static final String HASH_ALGORITHM = "SHA-256";
 	
-	private final String s1 = "Zahir,King,zking,orci.Donec@ametmassaQuisque.com,0ÉRú±\"ÃùuŸ¦Ù\7X²F´þâ9•{-OîFâapÄ,15";
-	private final String s2 = "Cassandra,Schwartz,cschwartz,semper@imperdietornare.co.uk,0ÉRú±\"ÃùuŸ¦Ù\7X²F´þâ9•{-OîFâapÄ,4";
-	private final String s3 = "Shannon,Hansen,shansen,convallis.est.vitae@arcu.ca,0ÉRú±\"ÃùuŸ¦Ù\7X²F´þâ9•{-OîFâapÄ,14";
+	private final String s1 = "Zahir,King,zking,orci.Donec@ametmassaQuisque.com,pw,15";
+	private final String s2 = "Cassandra,Schwartz,cschwartz,semper@imperdietornare.co.uk,pw,4";
+	private final String s3 = "Shannon,Hansen,shansen,convallis.est.vitae@arcu.ca,pw,14";
+	private final String s4 = "Demetrius,Austin,daustin,Curabitur.egestas.nunc@placeratorcilacus.co.uk,pw,18";
+	private final String s5 = "Raymond,Brennan,rbrennan,litora.torquent@pellentesquemassalobortis.ca,pw,12";
+	private final String s6 = "Emerald,Frost,efrost,adipiscing@acipsumPhasellus.edu,pw,3";
+	private final String s7 = "Lane,Berg,lberg,sociis@non.org,pw,14";
+	private final String s8 = "Griffith,Stone,gstone,porta@magnamalesuadavel.net,pw,17";
+	private final String s9 = "Althea,Hicks,ahicks,Phasellus.dapibus@luctusfelis.com,pw,11";
+	private final String s10 = "Dylan,Nolan,dnolan,placerat.Cras.dictum@dictum.net,pw,5";
+	
+	private final String[] validStudents = {s1, s2, s3, s4, s5, s6, s7, s8, s9, s10};
 	
 	@Before
 	public void setUp() {
@@ -49,19 +59,14 @@ public class StudentRecordIOTest {
 	public void testReadStudentRecords() {
 		try {
 			ArrayList<Student> students = StudentRecordIO.readStudentRecords(validTestFile);
-			assertEquals(8, students.size());
+			assertEquals(10, students.size());
 			
-			for (int i = 0; i < validStudent.length; i++) {
-				assertEquals(validStudent[i], students.get(i).toString());
-			}
+			assertEquals("King", students.get(0).getLastName());
+			assertEquals("Schwartz", students.get(1).getLastName());
+			assertEquals("Hansen", students.get(2).getLastName());
 		} catch (FileNotFoundException e) {
 			fail("Unexpected error reading " + validTestFile);
 		}
-	}
-
-	@Test
-	public void testWriteStudentRecords() {
-		fail("Not yet implemented");
 	}
 	
 	private void checkFiles(String expFile, String actFile) {
@@ -86,6 +91,24 @@ public class StudentRecordIOTest {
 	    } catch (IOException e) {
 	        fail("Error reading files.");
 	    }
+	}
+	
+	@Test
+	public void testWriteStudentRecordsNoPermissions() {
+	    ArrayList<Student> students = new ArrayList<Student>();
+	    students.add(new Student("Zahir", "King", "zking", "orci.Donec@ametmassaQuisque.com", hashPW, 15));
+	    //Assumption that you are using a hash of "pw" stored in hashPW
+	    
+	    try {
+	        StudentRecordIO.writeStudentRecords("/home/sesmith5/actual_student_records.txt", students);
+	        fail("Attempted to write to a directory location that doesn't exist or without the appropriate permissions and the write happened.");
+	    } catch (IOException e) {
+	        assertEquals("/home/sesmith5/actual_student_records.txt (Permission denied)", e.getMessage());
+	        //The actual error message on Jenkins!
+	    }
+	    
+	    checkFiles("test-files/expected_activity_records.txt", "test-files/actual_activity_records.txt");
+	    
 	}
 
 }
