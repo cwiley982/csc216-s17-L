@@ -3,14 +3,19 @@ package edu.ncsu.csc216.pack_scheduler.directory;
 import static org.junit.Assert.*;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import edu.ncsu.csc216.pack_scheduler.user.Student;
 
 /**
  * Tests StudentDirectory.
@@ -32,6 +37,9 @@ public class StudentDirectoryTest {
 	private static final String PASSWORD = "pw";
 	/** Test max credits */
 	private static final int MAX_CREDITS = 15;
+	/** Hashing algorithm */
+	private static final String HASH_ALGORITHM = "SHA-256";
+	
 	
 	/**
 	 * Resets course_records.txt for use in other tests.
@@ -87,6 +95,13 @@ public class StudentDirectoryTest {
 		//Test valid file
 		sd.loadStudentsFromFile(validTestFile);
 		assertEquals(10, sd.getStudentDirectory().length);
+		
+		try {
+			sd.loadStudentsFromFile("empty.txt");
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals("Unable to read file empty.txt", e.getMessage());
+		}
 	}
 
 	/**
@@ -103,6 +118,64 @@ public class StudentDirectoryTest {
 		assertEquals(FIRST_NAME, studentDirectory[0][0]);
 		assertEquals(LAST_NAME, studentDirectory[0][1]);
 		assertEquals(ID, studentDirectory[0][2]);
+		
+		
+		//Test invalid Student
+		studentDirectory = null;
+		try {
+			sd.addStudent(FIRST_NAME, LAST_NAME, ID, EMAIL, null, PASSWORD, MAX_CREDITS);
+			studentDirectory = sd.getStudentDirectory();
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertNull(studentDirectory);
+		}
+		
+		//Test invalid Student
+		studentDirectory = null;
+		try {
+			sd.addStudent(FIRST_NAME, LAST_NAME, ID, EMAIL, "", PASSWORD, MAX_CREDITS);
+			studentDirectory = sd.getStudentDirectory();
+			assertEquals(1, studentDirectory.length);
+			assertEquals(FIRST_NAME, studentDirectory[0][0]);
+			assertEquals(LAST_NAME, studentDirectory[0][1]);
+			assertEquals(ID, studentDirectory[0][2]);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertNull(studentDirectory);
+		}
+		//Test invalid Student
+		studentDirectory = null;
+		try {
+			sd.addStudent(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, "", MAX_CREDITS);
+			studentDirectory = sd.getStudentDirectory();
+			assertEquals(1, studentDirectory.length);
+			assertEquals(FIRST_NAME, studentDirectory[0][0]);
+			assertEquals(LAST_NAME, studentDirectory[0][1]);
+			assertEquals(ID, studentDirectory[0][2]);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertNull(studentDirectory);
+		}
+
+		
+		// Test invalid Student
+		studentDirectory = null;
+		try {
+			sd.addStudent(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, null, MAX_CREDITS);
+			studentDirectory = sd.getStudentDirectory();
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertNull(studentDirectory);
+		}
+		
+		
+		sd.addStudent(FIRST_NAME, FIRST_NAME, ID, EMAIL, PASSWORD, PASSWORD, MAX_CREDITS);
+		assertFalse(sd.addStudent(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, PASSWORD, MAX_CREDITS));
+		
+		
+		
+		
+
 	}
 
 	/**
@@ -135,6 +208,16 @@ public class StudentDirectoryTest {
 		assertEquals(1, sd.getStudentDirectory().length);
 		sd.saveStudentDirectory("test-files/actual_student_records.txt");
 		checkFiles("test-files/expected_student_records.txt", "test-files/actual_student_records.txt");
+		
+		//Invalid path
+		try{
+		sd.saveStudentDirectory("/home/sesmith5/test-files/actual_student_records.txt");
+		checkFiles("test-files/expected_student_records.txt", "test-files/actual_student_records.txt");
+		fail();
+		} catch (IllegalArgumentException e){
+			assertEquals("Unable to write to file /home/sesmith5/test-files/actual_student_records.txt", e.getMessage());
+		}
+		
 	}
 	
 	/**
