@@ -118,7 +118,7 @@ public class StudentRecordIOTest {
 	        //The actual error message on Jenkins!
 	    }
 	    
-	    checkFiles("test-files/expected_activity_records.txt", "test-files/actual_activity_records.txt");
+	    checkFiles("test-files/expected_student_records.txt", "test-files/actual_student_records.txt");
 	    
 	}
 
