@@ -3,19 +3,15 @@ package edu.ncsu.csc216.pack_scheduler.directory;
 import static org.junit.Assert.*;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.ncsu.csc216.pack_scheduler.user.Student;
 
 /**
  * Tests StudentDirectory.
@@ -37,8 +33,7 @@ public class StudentDirectoryTest {
 	private static final String PASSWORD = "pw";
 	/** Test max credits */
 	private static final int MAX_CREDITS = 15;
-	/** Hashing algorithm */
-	private static final String HASH_ALGORITHM = "SHA-256";
+
 	
 	
 	/**
