@@ -79,28 +79,31 @@ public class StudentRecordIO {
 	 * @return Student created with info from string
 	 */
 	private static Student processStudent(String studentInfo) {
+		String firstName;
+		String lastName;
+		String id;
+		String email;
+		String password;
+		int maxCredits;
 		Scanner info = new Scanner(studentInfo);
-		info.useDelimiter(",");
 		Student s = null;
-
+		
+		info.useDelimiter(",");
+		
 		try {
-			String firstName = info.next();
-			String lastName = info.next();
-			String id = info.next();
-			String email = info.next();
-			String password = info.next();
-			
-			if (info.hasNextInt()) {
-				int maxCredits = info.nextInt();
-				info.close();
-				s = new Student(firstName, lastName, id, email, password, maxCredits);
-			} else {
-				info.close();
-				s = new Student(firstName, lastName, id, email, password);
-			}
+			firstName = info.next();
+			lastName = info.next();
+			id = info.next();
+			email = info.next();
+			password = info.next();
+			maxCredits = info.nextInt();
+			s = new Student(firstName, lastName, id, email, password, maxCredits);
+
 		} catch (NoSuchElementException e) {
-			//skip the line
+			info.close();
+			throw new IllegalArgumentException();
 		}
+		info.close();
 		return s;
 	}
 }
