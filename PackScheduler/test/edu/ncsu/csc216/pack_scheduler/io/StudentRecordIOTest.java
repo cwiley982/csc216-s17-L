@@ -56,7 +56,7 @@ public class StudentRecordIOTest {
 	}
 
 	@Test
-	public void testReadStudentRecords() {
+	public void testReadValidStudentRecords() {
 		try {
 			ArrayList<Student> students = StudentRecordIO.readStudentRecords(validTestFile);
 			assertEquals(10, students.size());
@@ -66,6 +66,17 @@ public class StudentRecordIOTest {
 			assertEquals("Hansen", students.get(2).getLastName());
 		} catch (FileNotFoundException e) {
 			fail("Unexpected error reading " + validTestFile);
+		}
+	}
+	
+	@Test
+	public void testReadInvalidStudentRecords(){
+		ArrayList<Student> students;
+		try {
+			students = StudentRecordIO.readStudentRecords(invalidTestFile);
+			assertEquals(0, students.size());
+		} catch (FileNotFoundException e) {
+			fail("Unexpected FileNotFoundException");
 		}
 	}
 	

@@ -32,27 +32,21 @@ public class StudentRecordIO {
 	 *             if file cannot be accessed
 	 */
 	public static ArrayList<Student> readStudentRecords(String fileName) throws FileNotFoundException {
+		Student s = null;
 		Scanner fileReader = new Scanner(new FileInputStream(fileName));
 		ArrayList<Student> students = new ArrayList<Student>();
 		while (fileReader.hasNextLine()) {
-			try {
-				Student student = processStudent(fileReader.nextLine());
-				boolean duplicate = false;
-				for (int i = 0; i < students.size(); i++) {
-					Student s = students.get(i);
-					if (student.getId().equals(s.getId())) {
-						// it's a duplicate
-						duplicate = true;
-					}
-				}
-				if (!duplicate) {
-					students.add(student);
-				}
-			} catch (IllegalArgumentException | NullPointerException e) {
-				//skip the line
-			}
-		}
 
+			try {
+				s = processStudent(fileReader.nextLine());
+				
+				students.add(s);
+			} catch (IllegalArgumentException e) {
+				// skip
+			}
+		
+
+		}
 		fileReader.close();
 		return students;
 	}
