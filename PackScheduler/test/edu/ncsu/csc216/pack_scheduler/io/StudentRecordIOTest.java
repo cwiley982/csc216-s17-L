@@ -74,9 +74,12 @@ public class StudentRecordIOTest {
 			ArrayList<Student> students = StudentRecordIO.readStudentRecords(validTestFile);
 			assertEquals(10, students.size());
 			
-			assertEquals("King", students.get(0).getLastName());
-			assertEquals("Schwartz", students.get(1).getLastName());
-			assertEquals("Hansen", students.get(2).getLastName());
+			for (int i = 0; i < validStudents.length; i++) {
+				assertEquals(validStudents[i], students.get(i).toString());
+			}
+//			assertEquals("King", students.get(0).getLastName());
+//			assertEquals("Schwartz", students.get(1).getLastName());
+//			assertEquals("Hansen", students.get(2).getLastName());
 		} catch (FileNotFoundException e) {
 			fail("Unexpected error reading " + validTestFile);
 		}
