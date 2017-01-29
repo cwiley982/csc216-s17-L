@@ -16,7 +16,14 @@ import org.junit.Test;
 import edu.ncsu.csc216.pack_scheduler.user.Student;
 
 
-
+/**
+ * Tests StudentRecordIO class
+ * 
+ * @author Caitlyn Wiley
+ * @author Kaiwen Li
+ * @author Spencer Otten
+ *
+ */
 public class StudentRecordIOTest {
 	/** Valid student records */
 	private final String validTestFile = "test-files/student_records.txt";
@@ -39,6 +46,9 @@ public class StudentRecordIOTest {
 	
 	private final String[] validStudents = {s1, s2, s3, s4, s5, s6, s7, s8, s9, s10};
 	
+	/**
+	 * Sets up hashCode for passwords so hashed passwords can accurately be read and stored
+	 */
 	@Before
 	public void setUp() {
 	    try {
@@ -55,6 +65,9 @@ public class StudentRecordIOTest {
 	    }
 	}
 
+	/**
+	 * Tests readStuedntRecords() with a file of valid students
+	 */
 	@Test
 	public void testReadValidStudentRecords() {
 		try {
@@ -69,6 +82,9 @@ public class StudentRecordIOTest {
 		}
 	}
 	
+	/**
+	 * Tests readStuedntRecords() with a file of invalid students
+	 */
 	@Test
 	public void testReadInvalidStudentRecords(){
 		ArrayList<Student> students = new ArrayList<Student>();
@@ -80,6 +96,11 @@ public class StudentRecordIOTest {
 		}
 	}
 	
+	/**
+	 * Checks two files against each other to see if they contain the same information
+	 * @param expFile what the actual file will be checked against
+	 * @param actFile the file written to by writeStudentRecords()
+	 */
 	private void checkFiles(String expFile, String actFile) {
 	    try {
 	        Scanner expScanner = new Scanner(new FileInputStream(expFile));
@@ -104,6 +125,9 @@ public class StudentRecordIOTest {
 	    }
 	}
 	
+	/**
+	 * Tests writeStudentRecords() to see if it correctly writes Students to a file
+	 */
 	@Test
 	public void testWriteStudentRecordsNoPermissions() {
 	    ArrayList<Student> students = new ArrayList<Student>();

@@ -4,24 +4,36 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+/**
+ * Tests Student.java constructors and methods
+ * 
+ * @author Caitlyn Wiley
+ * @author Kaiwen Li
+ * @author Spencer Otten
+ *
+ */
 public class StudentTest {
 
 	/** Test first name */
-	private static final String firstName = "Stu";
+	private static final String FIRST_NAME = "Stu";
 	/** Test last name */
-	private static final String lastName = "Dent";
+	private static final String LAST_NAME = "Dent";
 	/** Test id */
-	private static final String id = "sdent";
+	private static final String ID = "sdent";
 	/** Test email */
-	private static final String email = "sdent@ncsu.edu";
+	private static final String EMAIL = "sdent@ncsu.edu";
 	/** Test password */
-	private static final String password = "pw";
+	private static final String PASSWORD = "pw";
 	/** Test max credits */
 	public static final int MAX_CREDITS = 15;
+	
+	/**
+	 * Tests constructing a Student with all 6 fields
+	 */
 	@Test
 	public void testStudentStringStringStringStringStringInt() {
 		try {
-			Student s = new Student(firstName, lastName, id, email, password, MAX_CREDITS);
+			Student s = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, MAX_CREDITS);
 			assertEquals("Stu", s.getFirstName());
 			assertEquals("Dent", s.getLastName());
 			assertEquals("sdent", s.getId());
@@ -34,10 +46,13 @@ public class StudentTest {
 		
 	}
 
+	/**
+	 * Tests constructing a Student with all fields except max credits
+	 */
 	@Test
 	public void testStudentStringStringStringStringString() {
 		try {
-			Student s = new Student(firstName, lastName, id, email, password);
+			Student s = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD);
 			assertEquals("Stu", s.getFirstName());
 			assertEquals("Dent", s.getLastName());
 			assertEquals("sdent", s.getId());
@@ -48,12 +63,15 @@ public class StudentTest {
 		}
 	}
 
+	/**
+	 * Tests setting a Student's first name
+	 */
 	@Test
 	public void testSetFirstName() {
 		Student s = null;
 		try {
-			s = new Student(firstName, lastName, id, email, password, MAX_CREDITS);
-			s.setFirstName(lastName);
+			s = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, MAX_CREDITS);
+			s.setFirstName(LAST_NAME);
 			assertEquals("Dent", s.getFirstName());
 
 		} catch (IllegalArgumentException e) {
@@ -61,7 +79,7 @@ public class StudentTest {
 		}
 		s = null;
 		try {
-			s = new Student(null, lastName, id, email, password, MAX_CREDITS);
+			s = new Student(null, LAST_NAME, ID, EMAIL, PASSWORD, MAX_CREDITS);
 			fail();
 		} catch (IllegalArgumentException e) {
 			assertNull(s);
@@ -69,18 +87,21 @@ public class StudentTest {
 		
 		s = null;
 		try {
-			s = new Student("", lastName, id, email, password, MAX_CREDITS);
+			s = new Student("", LAST_NAME, ID, EMAIL, PASSWORD, MAX_CREDITS);
 		} catch (IllegalArgumentException e) {
 			assertNull(s);
 		}
 	}
 
+	/**
+	 * Tests setting a Student's last name
+	 */
 	@Test
 	public void testSetLastName() {
 		Student s = null;
 		try {
-			s = new Student(firstName, lastName, id, email, password, MAX_CREDITS);
-			s.setFirstName(lastName);
+			s = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, MAX_CREDITS);
+			s.setFirstName(LAST_NAME);
 			assertEquals("Dent", s.getFirstName());
 
 		} catch (IllegalArgumentException e) {
@@ -89,47 +110,35 @@ public class StudentTest {
 		
 		s = null;
 		try {
-			s = new Student(firstName, null, id, email, password, MAX_CREDITS);
+			s = new Student(FIRST_NAME, null, ID, EMAIL, PASSWORD, MAX_CREDITS);
 		} catch (IllegalArgumentException e) {
 			assertNull(s);
 		}
 		
 		s = null;
 		try {
-			s = new Student(firstName, "", id, email, password, MAX_CREDITS);
+			s = new Student(FIRST_NAME, "", ID, EMAIL, PASSWORD, MAX_CREDITS);
 		} catch (IllegalArgumentException e) {
 			assertNull(s);
 		}
 	}
 
+	/**
+	 * Tests setting a Student's email
+	 */
 	@Test
 	public void testSetEmail() {
 		Student s = null;
 		
 		try {
-			s = new Student(firstName, lastName, id, email, password, MAX_CREDITS);
+			s = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, MAX_CREDITS);
 		} catch (IllegalArgumentException e) {
 			fail();
 		}
 		
 		s = null;
 		try {
-			s = new Student(firstName, lastName, id, null, password, MAX_CREDITS);
-			fail();
-		} catch (IllegalArgumentException e) {
-			assertNull(s);
-		}
-		
-		s = null;
-		try {
-			s = new Student(firstName, lastName, id, "", password, MAX_CREDITS);
-		} catch (IllegalArgumentException e) {
-			assertNull(s);
-		}
-		
-		s = null;
-		try {
-			s = new Student(firstName, lastName, id, "sdentncsu.edu", password, MAX_CREDITS);
+			s = new Student(FIRST_NAME, LAST_NAME, ID, null, PASSWORD, MAX_CREDITS);
 			fail();
 		} catch (IllegalArgumentException e) {
 			assertNull(s);
@@ -137,7 +146,14 @@ public class StudentTest {
 		
 		s = null;
 		try {
-			s = new Student(firstName, lastName, id, "sdent@ncsuedu", password, MAX_CREDITS);
+			s = new Student(FIRST_NAME, LAST_NAME, ID, "", PASSWORD, MAX_CREDITS);
+		} catch (IllegalArgumentException e) {
+			assertNull(s);
+		}
+		
+		s = null;
+		try {
+			s = new Student(FIRST_NAME, LAST_NAME, ID, "sdentncsu.edu", PASSWORD, MAX_CREDITS);
 			fail();
 		} catch (IllegalArgumentException e) {
 			assertNull(s);
@@ -145,19 +161,30 @@ public class StudentTest {
 		
 		s = null;
 		try {
-			s = new Student(firstName, lastName, id, "sden.t@ncsuedu", password, MAX_CREDITS);
+			s = new Student(FIRST_NAME, LAST_NAME, ID, "sdent@ncsuedu", PASSWORD, MAX_CREDITS);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertNull(s);
+		}
+		
+		s = null;
+		try {
+			s = new Student(FIRST_NAME, LAST_NAME, ID, "sden.t@ncsuedu", PASSWORD, MAX_CREDITS);
 			fail();
 		} catch (IllegalArgumentException e) {
 			assertNull(s);
 		}
 	}
 
+	/**
+	 * Tests setting a Student's password
+	 */
 	@Test
 	public void testSetPassword() {
 		Student s = null;
 		try {
-			s = new Student(firstName, lastName, id, email, password, MAX_CREDITS);
-			s.setPassword(firstName);
+			s = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, MAX_CREDITS);
+			s.setPassword(FIRST_NAME);
 			assertEquals("Stu", s.getPassword());
 		} catch (IllegalArgumentException e) {
 			fail();
@@ -165,7 +192,7 @@ public class StudentTest {
 		
 		s = null;
 		try {
-			s = new Student(firstName, lastName, id, email, null, MAX_CREDITS);
+			s = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, null, MAX_CREDITS);
 			fail();
 		} catch (IllegalArgumentException e) {
 			assertNull(s);
@@ -173,18 +200,21 @@ public class StudentTest {
 		
 		s = null;
 		try {
-			s = new Student(firstName, lastName, id, email, "", MAX_CREDITS);
+			s = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, "", MAX_CREDITS);
 			fail();
 		} catch (IllegalArgumentException e) {
 			assertNull(s);
 		}
 	}
 
+	/**
+	 * Tests setting max credits for a Student
+	 */
 	@Test
 	public void testSetMaxCredits() {
 		Student s = null;
 		try {
-			s = new Student(firstName, lastName, id, email, password, MAX_CREDITS);
+			s = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, MAX_CREDITS);
 			s.setMaxCredits(12);
 			assertEquals(12, s.getMaxCredits());
 		} catch (IllegalArgumentException e) {
@@ -193,7 +223,7 @@ public class StudentTest {
 		
 		s = null;
 		try {
-			s = new Student(firstName, lastName, id, email, password, 2);
+			s = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, 2);
 			fail();
 		} catch (IllegalArgumentException e) {
 			assertNull(s);
@@ -201,18 +231,21 @@ public class StudentTest {
 		
 		s = null;
 		try {
-			s = new Student(firstName, lastName, id, email, password, 19);
+			s = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, 19);
 			fail();
 		} catch (IllegalArgumentException e) {
 			assertNull(s);
 		}
 	}
 
+	/**
+	 * Tests getting a string representing the Student
+	 */
 	@Test
 	public void testToString() {
 		Student s = null;
 		try {
-			s = new Student(firstName, lastName, id, email, password, MAX_CREDITS); 
+			s = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, MAX_CREDITS); 
 			assertEquals("Stu,Dent,sdent,sdent@ncsu.edu,pw,15", s.toString());
 		} catch (IllegalArgumentException e) {
 			fail();
@@ -220,23 +253,26 @@ public class StudentTest {
 		
 		s = null;
 		try {
-			s = new Student(firstName, lastName, id, email, password); 
+			s = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD); 
 			assertEquals("Stu,Dent,sdent,sdent@ncsu.edu,pw,18", s.toString());
 		} catch (IllegalArgumentException e) {
 			fail();
 		}
 	}
 
+	/**
+	 * Tests equals() method to make sure it compares Students correctly
+	 */
 	@Test
 	public void testEqualsObject() {
-		Student s1 = new Student(firstName, lastName, id, email, password, MAX_CREDITS); 
-		Student s2 = new Student(firstName, lastName, id, email, password, MAX_CREDITS); 
-		Student s3 = new Student(firstName, lastName, id, email, password, 12); 
-		Student s4 = new Student(firstName, lastName, id, email, "123", MAX_CREDITS); 
-		Student s5 = new Student(firstName, lastName, id, "kli11@ncsu.edu", password, MAX_CREDITS); 
-		Student s6 = new Student(firstName, lastName, "kli11", email, password, MAX_CREDITS); 
-		Student s7 = new Student(firstName, "Li", id, email, password, MAX_CREDITS); 
-		Student s8 = new Student("Kevin", lastName, id, email, password, MAX_CREDITS); 
+		Student s1 = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, MAX_CREDITS); 
+		Student s2 = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, MAX_CREDITS); 
+		Student s3 = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, 12); 
+		Student s4 = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, "123", MAX_CREDITS); 
+		Student s5 = new Student(FIRST_NAME, LAST_NAME, ID, "kli11@ncsu.edu", PASSWORD, MAX_CREDITS); 
+		Student s6 = new Student(FIRST_NAME, LAST_NAME, "kli11", EMAIL, PASSWORD, MAX_CREDITS); 
+		Student s7 = new Student(FIRST_NAME, "Li", ID, EMAIL, PASSWORD, MAX_CREDITS); 
+		Student s8 = new Student("Kevin", LAST_NAME, ID, EMAIL, PASSWORD, MAX_CREDITS); 
 		
 		assertTrue(s1.equals(s2));
 		assertTrue(s2.equals(s1));
@@ -252,19 +288,22 @@ public class StudentTest {
 		
 	}
 
+	/**
+	 * Tests hashCode() method
+	 */
 	@Test
 	public void testHashCode() {
-		Student s1 = new Student(firstName, lastName, id, email, password, MAX_CREDITS); 
-		Student s2 = new Student(firstName, lastName, id, email, password, MAX_CREDITS); 
-		Student s3 = new Student(firstName, lastName, id, email, password, 12); 
-		Student s4 = new Student(firstName, lastName, id, email, "123", MAX_CREDITS); 
-		Student s5 = new Student(firstName, lastName, id, "kli11@ncsu.edu", password, MAX_CREDITS); 
-		Student s6 = new Student(firstName, lastName, "kli11", email, password, MAX_CREDITS); 
-		Student s7 = new Student(firstName, "Li", id, email, password, MAX_CREDITS); 
-		Student s8 = new Student("Kevin", lastName, id, email, password, MAX_CREDITS); 
+		Student s1 = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, MAX_CREDITS); 
+		Student s2 = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, MAX_CREDITS); 
+		Student s3 = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, 12); 
+		Student s4 = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, "123", MAX_CREDITS); 
+		Student s5 = new Student(FIRST_NAME, LAST_NAME, ID, "kli11@ncsu.edu", PASSWORD, MAX_CREDITS); 
+		Student s6 = new Student(FIRST_NAME, LAST_NAME, "kli11", EMAIL, PASSWORD, MAX_CREDITS); 
+		Student s7 = new Student(FIRST_NAME, "Li", ID, EMAIL, PASSWORD, MAX_CREDITS); 
+		Student s8 = new Student("Kevin", LAST_NAME, ID, EMAIL, PASSWORD, MAX_CREDITS); 
 		
 		
-		assertEquals(s1.hashCode(),s2.hashCode());
+		assertEquals(s1.hashCode(), s2.hashCode());
 		
 		assertNotEquals(s1.hashCode(), s3.hashCode());
 		assertNotEquals(s1.hashCode(), s4.hashCode());
