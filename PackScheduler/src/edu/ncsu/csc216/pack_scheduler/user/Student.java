@@ -79,7 +79,7 @@ public class Student {
 	 */
 	public void setFirstName(String firstName) {
 		if (firstName == null || firstName.equals("")) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("No first name set.");
 		}
 		this.firstName = firstName;
 	}
@@ -100,7 +100,7 @@ public class Student {
 	 */
 	public void setLastName(String lastName) {
 		if (lastName == null || lastName.equals("")) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("No last name set.");
 		}
 		this.lastName = lastName;
 	}
@@ -122,7 +122,7 @@ public class Student {
 	 */
 	private void setId(String id) {
 		if (id == null || id.equals("")) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("No id set.");
 		}
 		this.id = id;
 	}
@@ -144,10 +144,10 @@ public class Student {
 	 */
 	public void setEmail(String email) {
 		if (email == null || email.equals("")) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("No email entered.");
 		}
 		if (email.indexOf("@") == -1 || email.indexOf(".") == -1) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Incorrect email adress.");
 		}
 		String a = "";
 		for (int i = email.length() - 1; i >= 0; i--) {
@@ -177,7 +177,7 @@ public class Student {
 	 */
 	public void setPassword(String password) {
 		if (password == null || password.equals("")) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid Password");
 		}
 		this.password = password;
 	}
@@ -190,7 +190,7 @@ public class Student {
 	 */
 	public void setMaxCredits(int maxCredits) {
 		if (maxCredits < 3 || maxCredits > 18) {
-			throw new IllegalArgumentException("Max credits must be a positive number between 3 and 18");
+			throw new IllegalArgumentException("Max credits must be a positive number between 3 and 18.");
 		}
 		this.maxCredits = maxCredits;
 	}
