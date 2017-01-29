@@ -190,7 +190,7 @@ public class Student {
 	 */
 	public void setMaxCredits(int maxCredits) {
 		if (maxCredits < 3 || maxCredits > 18) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Max credits must be a positive number between 3 and 18");
 		}
 		this.maxCredits = maxCredits;
 	}
