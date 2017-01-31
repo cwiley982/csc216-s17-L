@@ -14,7 +14,18 @@ public class SortedListTest {
 		SortedList<String> list = new SortedList<String>();
 		assertEquals(0, list.size());
 		assertFalse(list.contains("apple"));
-		
+		list.add("pear");
+		list.add("kiwi");
+		list.add("mango");
+		list.add("banana");
+		list.add("peach");
+		list.add("apple");
+		list.add("melon");
+		list.add("watermelon");
+		list.add("orange");
+		list.add("blueberry");
+		list.add("strawberry");
+		assertFalse(list.size() < 10);
 		//TODO Test that the list grows by adding at least 11 elements
 		//Remember the list's initial capacity is 10
 		
@@ -46,6 +57,23 @@ public class SortedListTest {
 	@Test
 	public void testGet() {
 		SortedList<String> list = new SortedList<String>();
+		assertEquals("", list.get(0));
+		list.add("This");
+		list.add("is");
+		list.add("Booty");
+		try{
+			assertFalse(list.get(-1));
+			fail();
+		} catch (IndexOutOfBoundsException e) {
+			
+		}
+		try {
+			assertFalse(list.get(list.size()));
+			fail();
+		} catch (IndexOutOfBoundsException e)  {
+			
+		}
+		
 		
 		//Since get() is used throughout the tests to check the
 		//contents of the list, we don't need to test main flow functionality
@@ -93,6 +121,18 @@ public class SortedListTest {
 	@Test
 	public void testIndexOf() {
 		SortedList<String> list = new SortedList<String>();
+		try {
+			assertEquals(list.indexOf("cat") , -1);
+			list.add("This");
+			list.add("is");
+			list.add("Booty");
+			assertEquals(list.indexOf("This"), 0);
+			assertEquals(list.indexOf("Hello"), -1);
+			assertFalse(list.indexOf(null));
+			fail();
+		} catch (NullPointerException e) {
+			
+		}
 		
 		//TODO Test indexOf on an empty list
 		
@@ -125,7 +165,9 @@ public class SortedListTest {
 	@Test
 	public void testIsEmpty() {
 		SortedList<String> list = new SortedList<String>();
-		
+		assertTrue(list.isEmpty());
+		list.add("Hello");
+		assertFalse(list.isEmpty());
 		//TODO Test that the list starts empty
 		
 		//TODO Add at least one element
