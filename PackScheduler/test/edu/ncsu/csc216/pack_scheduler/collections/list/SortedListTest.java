@@ -198,7 +198,7 @@ public class SortedListTest {
 	 * Tests clearing the list
 	 */
 	@Test
-	public void testClear() {
+	public void testClear() { 
 		SortedList<String> list = new SortedList<String>();
 
 		//Add some elements
