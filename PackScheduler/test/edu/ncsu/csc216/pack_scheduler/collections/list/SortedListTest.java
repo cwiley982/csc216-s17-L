@@ -28,7 +28,7 @@ public class SortedListTest {
 		list.add("blueberry");
 		list.add("strawberry");
 		assertFalse(list.size() < 10);
-		//TODO Test that the list grows by adding at least 11 elements
+		//Test that the list grows by adding at least 11 elements
 		//Remember the list's initial capacity is 10
 		
 	}
@@ -183,14 +183,14 @@ public class SortedListTest {
 			
 		}
 		
-		//TODO Test indexOf on an empty list
+		//Test indexOf on an empty list
 		
-		//TODO Add some elements
+		//Add some elements
 		
-		//TODO Test various calls to indexOf for elements in the list
+		//Test various calls to indexOf for elements in the list
 		//and not in the list
 		
-		//TODO Test checking the index of null
+		//Test checking the index of null
 		
 	}
 	
@@ -217,14 +217,12 @@ public class SortedListTest {
 	@Test
 	public void testIsEmpty() {
 		SortedList<String> list = new SortedList<String>();
+		//Test that the list starts empty
 		assertTrue(list.isEmpty());
+		//Add at least one element
 		list.add("Hello");
+		//Check that the list is no longer empty
 		assertFalse(list.isEmpty());
-		//TODO Test that the list starts empty
-		
-		//TODO Add at least one element
-		
-		//TODO Check that the list is no longer empty
 	}
 
 	/**
