@@ -8,7 +8,7 @@ package edu.ncsu.csc216.pack_scheduler.user;
  * @author Spencer Otten
  *
  */
-public class Student {
+public class Student implements Comparable<Student>{
 
 	/** First name of the student */
 	private String firstName;
@@ -274,6 +274,46 @@ public class Student {
 	 */
 	public String toString() {
 		return firstName + "," + lastName + "," + id + "," + email + "," + password + "," + maxCredits;
+	}
+
+	@Override
+	public int compareTo(Student s) {
+		if (getLastName().equals(s.getLastName()) && getFirstName().equals(s.getFirstName()) && (getId() == s.getId())) {
+			return 0;
+		}
+		
+		if (getLastName() != s.getLastName()) {
+			if (getLastName().length() < s.getLastName().length() && getLastName().contains(s.getLastName()) &&
+					(getLastName().charAt(0) == s.getLastName().charAt(0))) {
+				return 1;
+			} else if (getLastName().length() > s.getLastName().length() && getLastName().contains(s.getLastName()) &&
+					(getLastName().charAt(0) == s.getLastName().charAt(0))) {
+				return -1;
+			}
+		}
+		
+		
+		if (getFirstName() != s.getFirstName()) {
+			if (getFirstName().length() < (s.getFirstName().length()) && getFirstName().contains(s.getFirstName()) && 
+					(getLastName().charAt(0) == s.getFirstName().charAt(0))) {
+				return 1;
+			} else if (getFirstName().length() > (s.getFirstName().length()) && getFirstName().contains(s.getFirstName()) && 
+					(getLastName().charAt(0) == s.getFirstName().charAt(0))) {
+				return -1;
+			}
+		}
+		
+		if (getId() != s.getId()) {
+			for (int i = 0; i < getId().length(); i++) {
+				if (getId().length() <= s.getId().length() && getId().charAt(i) < s.getId().charAt(i)) {
+					return -1;
+				} else if (getId().length() >= s.getId().length() && getId().charAt(i) > s.getId().charAt(i)) {
+					return 1;
+				}
+				
+			}
+		}
+		return 0;
 	}
 
 }
