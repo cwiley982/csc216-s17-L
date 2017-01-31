@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import edu.ncsu.csc216.collections.list.SortedList;
+
 public class SortedListTest {
 
 	/**
@@ -31,12 +33,33 @@ public class SortedListTest {
 		list.add("banana");
 		assertEquals(1, list.size());
 		assertEquals("banana", list.get(0));
+		//Test adding to the front of the list
+		list.add("apple");
+		assertEquals(2, list.size());
+		assertEquals("apple", list.get(0));
+		//Test adding to the back of the list
+		list.add("watermelon");
+		assertEquals(3, list.size());
+		assertEquals("watermelon", list.get(2));
+		//Test adding to the middle of the list
+		list.add("papaya");
+		assertEquals(4, list.size());
+		assertEquals("papaya", list.get(2));
+		//Test adding a null element
+		try {
+			list.add(null);
+			fail();
+		} catch (NullPointerException e) {
+			assertEquals(4, list.size());
+		}
+		//Test adding a duplicate element
+		try {
+			list.add("banana");
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(4, list.size());
+		}
 		
-		//TODO Test adding to the front, middle and back of the list
-		
-		//TODO Test adding a null element
-		
-		//TODO Test adding a duplicate element
 	}
 	
 	/**
@@ -70,21 +93,47 @@ public class SortedListTest {
 	public void testRemove() {
 		SortedList<String> list = new SortedList<String>();
 		
-		//TODO Test removing from an empty list
-		
-		//TODO Add some elements to the list - at least 4
-		
-		//TODO Test removing an element at an index < 0
-		
-		//TODO Test removing an element at size
-		
-		//TODO Test removing a middle element
-		
-		//TODO Test removing the last element
-		
-		//TODO Test removing the first element
-		
-		//TODO Test removing the last element
+		//Test removing from an empty list
+		try {
+			list.remove(0);
+			fail();
+		} catch (IndexOutOfBoundsException e) {
+			assertEquals(0, list.size());
+		}
+		//Add some elements to the list - at least 4
+		list.add("bird");
+		list.add("cat");
+		list.add("dog");
+		list.add("hamster");
+		//Test removing an element at an index < 0
+		try {
+			list.remove(-1);
+			fail();
+		} catch (IndexOutOfBoundsException e) {
+			assertEquals(4, list.size());
+		}
+		//Test removing an element at size
+		try {
+			list.remove(list.size());
+			fail();
+		} catch (IndexOutOfBoundsException e) {
+			assertEquals(4, list.size());
+		}
+		//Test removing a middle element
+		String removedElement = list.remove(2);
+		assertEquals(removedElement, "dog");
+		assertEquals("hamster", list.get(2));
+		//Test removing the last element
+		String removedElement2 = list.remove(2);
+		assertEquals(removedElement2, "hamster");
+		assertEquals("cat", list.get(1));
+		//Test removing the first element
+		String removedElement3 = list.remove(0);
+		assertEquals(removedElement3, "bird");
+		assertEquals("cat", list.get(0));
+		//Test removing the last element
+		String removedElement4 = list.remove(list.size() - 1);
+		assertEquals(0, list.size());
 	}
 	
 	/**
