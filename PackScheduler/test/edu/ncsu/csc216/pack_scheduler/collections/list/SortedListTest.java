@@ -215,9 +215,25 @@ public class SortedListTest {
 		SortedList<String> list2 = new SortedList<String>();
 		SortedList<String> list3 = new SortedList<String>();
 		
-		//TODO Make two lists the same and one list different
-		
-		//TODO Test for equality and non-equality
+		//Make two lists the same and one list different
+		list1.add("These");
+		list1.add("two");
+		list1.add("are");
+		list1.add("the");
+		list1.add("same");
+		list2.add("These");
+		list2.add("two");
+		list2.add("are");
+		list2.add("the");
+		list2.add("same");
+		list3.add("But");
+		list3.add("this");
+		list3.add("one");
+		list3.add("is");
+		list3.add("different");
+		//Test for equality and non-equality
+		assertTrue(list1.equals(list2));
+		assertFalse(list1.equals(list3));
 	}
 	
 	/**
@@ -230,9 +246,25 @@ public class SortedListTest {
 		SortedList<String> list2 = new SortedList<String>();
 		SortedList<String> list3 = new SortedList<String>();
 		
-		//TODO Make two lists the same and one list different
-		
-		//TODO Test for the same and different hashCodes
+		//Make two lists the same and one list different
+		list1.add("These");
+		list1.add("two");
+		list1.add("are");
+		list1.add("the");
+		list1.add("same");
+		list2.add("These");
+		list2.add("two");
+		list2.add("are");
+		list2.add("the");
+		list2.add("same");
+		list3.add("But");
+		list3.add("this");
+		list3.add("one");
+		list3.add("is");
+		list3.add("different");
+		//Test for the same and different hashCodes
+		assertEquals(list1.hashCode(), list2.hashCode());
+		assertNotEquals(list1.hashCode(), list3.hashCode());
 	}
 
 }
