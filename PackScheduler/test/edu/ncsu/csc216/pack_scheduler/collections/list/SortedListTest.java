@@ -161,11 +161,14 @@ public class SortedListTest {
 	public void testClear() {
 		SortedList<String> list = new SortedList<String>();
 
-		//TODO Add some elements
-		
-		//TODO Clear the list
-		
-		//TODO Test that the list is empty
+		//Add some elements
+		list.add("hello");
+		list.add("hola");
+		list.add("bonjour");
+		//Clear the list
+		list.clear();
+		//Test that the list is empty
+		assertEquals(0, list.size());
 	}
 
 	/**
@@ -189,11 +192,18 @@ public class SortedListTest {
 	public void testContains() {
 		SortedList<String> list = new SortedList<String>();
 		
-		//TODO Test the empty list case
-		
-		//TODO Add some elements
-		
-		//TODO Test some true and false cases
+		//Test the empty list case
+		assertEquals(list.contains("cat"), false);
+		assertEquals(list.contains(""), false);
+		//Add some elements
+		list.add("carrot");
+		list.add("parrot");
+		list.add("ferret");
+		list.add("merit");
+		//Test some true and false cases
+		assertEquals(list.contains("carrot"), true);
+		assertFalse(list.contains("feret"));
+		assertEquals(list.contains("ferret"), true);
 	}
 	
 	/**
