@@ -1,4 +1,4 @@
-package edu.ncsu.csc216.collections.list;
+package edu.ncsu.csc216.pack_scheduler.collections.list;
 
 import static org.junit.Assert.*;
 
@@ -85,13 +85,13 @@ public class SortedListTest {
 		list.add("is");
 		list.add("Booty");
 		try{
-			assertFalse(list.get(-1));
+			assertEquals(list.get(-1), "");
 			fail();
 		} catch (IndexOutOfBoundsException e) {
 			
 		}
 		try {
-			assertFalse(list.get(list.size()));
+			assertEquals(list.get(list.size()), "");
 			fail();
 		} catch (IndexOutOfBoundsException e)  {
 			
@@ -103,13 +103,13 @@ public class SortedListTest {
 		//here.  Instead this test method should focus on the error 
 		//and boundary cases.
 		
-		//TODO Test getting an element from an empty list
+		//Test getting an element from an empty list
 		
-		//TODO Add some elements to the list
+		//Add some elements to the list
 		
-		//TODO Test getting an element at an index < 0
+		//Test getting an element at an index < 0
 		
-		//TODO Test getting an element at size
+		//Test getting an element at size
 		
 	}
 	
@@ -160,7 +160,7 @@ public class SortedListTest {
 		assertEquals(removedElement3, "bird");
 		assertEquals("cat", list.get(0));
 		//Test removing the last element
-		String removedElement4 = list.remove(list.size() - 1);
+		list.remove(list.size() - 1);
 		assertEquals(0, list.size());
 	}
 	
@@ -177,7 +177,7 @@ public class SortedListTest {
 			list.add("Booty");
 			assertEquals(list.indexOf("This"), 0);
 			assertEquals(list.indexOf("Hello"), -1);
-			assertFalse(list.indexOf(null));
+			assertEquals(list.indexOf(null), -1);
 			fail();
 		} catch (NullPointerException e) {
 			
