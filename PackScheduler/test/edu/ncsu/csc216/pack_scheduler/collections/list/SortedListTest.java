@@ -245,7 +245,7 @@ public class SortedListTest {
 		SortedList<String> list1 = new SortedList<String>();
 		SortedList<String> list2 = new SortedList<String>();
 		SortedList<String> list3 = new SortedList<String>();
-		
+		 
 		//Make two lists the same and one list different
 		list1.add("These");
 		list1.add("two");
