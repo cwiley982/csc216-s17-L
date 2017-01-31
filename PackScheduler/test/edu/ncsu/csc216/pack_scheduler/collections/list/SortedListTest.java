@@ -119,7 +119,7 @@ public class SortedListTest {
 	 * Tests getting the index of an element
 	 */
 	@Test
-	public void testIndexOf() {
+	public void testIndexOf() { 
 		SortedList<String> list = new SortedList<String>();
 		try {
 			assertEquals(list.indexOf("cat") , -1);
