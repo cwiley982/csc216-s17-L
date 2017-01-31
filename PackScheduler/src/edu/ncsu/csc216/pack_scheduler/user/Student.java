@@ -311,7 +311,7 @@ public class Student implements Comparable<Student>{
 					return 1;
 				}
 				
-			}
+			} 
 		}
 		return 0;
 	}
