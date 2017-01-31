@@ -80,7 +80,11 @@ public class SortedListTest {
 	@Test
 	public void testGet() {
 		SortedList<String> list = new SortedList<String>();
-		assertEquals("", list.get(0));
+		try {
+			assertEquals("", list.get(0));
+		} catch(IndexOutOfBoundsException e) {
+			
+		}
 		list.add("This");
 		list.add("is");
 		list.add("Booty");
@@ -173,9 +177,9 @@ public class SortedListTest {
 		try {
 			assertEquals(list.indexOf("cat") , -1);
 			list.add("This");
-			list.add("is");
+			list.add("Is");
 			list.add("Booty");
-			assertEquals(list.indexOf("This"), 0);
+			assertEquals(list.indexOf("This"), 2);
 			assertEquals(list.indexOf("Hello"), -1);
 			assertEquals(list.indexOf(null), -1);
 			fail();
