@@ -283,36 +283,42 @@ public class Student implements Comparable<Student>{
 		}
 		
 		if (getLastName() != s.getLastName()) {
-			if (getLastName().length() < s.getLastName().length() && getLastName().contains(s.getLastName()) &&
-					(getLastName().charAt(0) == s.getLastName().charAt(0))) {
-				return 1;
-			} else if (getLastName().length() > s.getLastName().length() && getLastName().contains(s.getLastName()) &&
-					(getLastName().charAt(0) == s.getLastName().charAt(0))) {
-				return -1;
+			int r = s.getLastName().compareToIgnoreCase(getLastName());
+			if (r < 0 ) {
+				r = 1;
+			} else if (r > 0) {
+				r = -1;
 			}
+			return r ;
 		}
-		
 		
 		if (getFirstName() != s.getFirstName()) {
-			if (getFirstName().length() < (s.getFirstName().length()) && getFirstName().contains(s.getFirstName()) && 
-					(getLastName().charAt(0) == s.getFirstName().charAt(0))) {
-				return 1;
-			} else if (getFirstName().length() > (s.getFirstName().length()) && getFirstName().contains(s.getFirstName()) && 
-					(getLastName().charAt(0) == s.getFirstName().charAt(0))) {
-				return -1;
+			int r = s.getFirstName().compareToIgnoreCase(getFirstName());
+			if (r < 0 ) {
+				r = 1;
+			} else if (r > 0) {
+				r = -1;
 			}
+			return r ;
 		}
 		
+
+		
 		if (getId() != s.getId()) {
-			for (int i = 0; i < getId().length(); i++) {
-				if (getId().length() <= s.getId().length() && getId().charAt(i) < s.getId().charAt(i)) {
-					return -1;
-				} else if (getId().length() >= s.getId().length() && getId().charAt(i) > s.getId().charAt(i)) {
-					return 1;
-				}
-				
-			} 
+			if (s.getId().length() < getId().length()) {
+				return 1;
+			} else if (s.getId().length() > getId().length()) {
+				return -1;
+			}
+			int r = s.getId().compareToIgnoreCase(getId());
+			if (r < 0 ) {
+				r = 1;
+			} else if (r > 0) {
+				r = -1;
+			}
+			return r ;
 		}
+		
 		return 0;
 	}
 

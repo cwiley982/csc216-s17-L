@@ -313,5 +313,18 @@ public class StudentTest {
 		assertNotEquals(s1.hashCode(), s8.hashCode());
 		
 	}
+	
+	@Test
+	public void testCompareTo(){
+		Student s1 = new Student("Kevin", "Li", "kli9", EMAIL, PASSWORD, MAX_CREDITS); 
+		Student s2 = new Student("Kevin", "Li", "kli11", EMAIL, PASSWORD, MAX_CREDITS); 
+		Student s3 = new Student("Abc", "Aa", "aaa", EMAIL, PASSWORD, MAX_CREDITS); 
+		Student s4 = new Student("Xyz", "Aa", "xaa", EMAIL, PASSWORD, MAX_CREDITS); 
+
+		assertEquals(-1, s1.compareTo(s2));
+		assertEquals(1, s2.compareTo(s1));
+		assertEquals(-1, s3.compareTo(s2));
+		assertEquals(1, s1.compareTo(s4));
+	}
 
 }
