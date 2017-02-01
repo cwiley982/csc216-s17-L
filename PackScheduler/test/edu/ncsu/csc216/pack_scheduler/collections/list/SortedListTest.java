@@ -1,4 +1,4 @@
-package edu.ncsu.csc216.collections.list;
+package edu.ncsu.csc216.pack_scheduler.collections.list;
 
 import static org.junit.Assert.*;
 
@@ -28,7 +28,7 @@ public class SortedListTest {
 		list.add("blueberry");
 		list.add("strawberry");
 		assertFalse(list.size() < 10);
-		//TODO Test that the list grows by adding at least 11 elements
+		//Test that the list grows by adding at least 11 elements
 		//Remember the list's initial capacity is 10
 		
 	}
@@ -80,18 +80,22 @@ public class SortedListTest {
 	@Test
 	public void testGet() {
 		SortedList<String> list = new SortedList<String>();
-		assertEquals("", list.get(0));
+		try {
+			assertEquals("", list.get(0));
+		} catch(IndexOutOfBoundsException e) {
+			
+		}
 		list.add("This");
 		list.add("is");
 		list.add("Booty");
 		try{
-			assertFalse(list.get(-1));
+			assertEquals(list.get(-1), "");
 			fail();
 		} catch (IndexOutOfBoundsException e) {
 			
 		}
 		try {
-			assertFalse(list.get(list.size()));
+			assertEquals(list.get(list.size()), "");
 			fail();
 		} catch (IndexOutOfBoundsException e)  {
 			
@@ -103,13 +107,13 @@ public class SortedListTest {
 		//here.  Instead this test method should focus on the error 
 		//and boundary cases.
 		
-		//TODO Test getting an element from an empty list
+		//Test getting an element from an empty list
 		
-		//TODO Add some elements to the list
+		//Add some elements to the list
 		
-		//TODO Test getting an element at an index < 0
+		//Test getting an element at an index < 0
 		
-		//TODO Test getting an element at size
+		//Test getting an element at size
 		
 	}
 	
@@ -160,7 +164,7 @@ public class SortedListTest {
 		assertEquals(removedElement3, "bird");
 		assertEquals("cat", list.get(0));
 		//Test removing the last element
-		String removedElement4 = list.remove(list.size() - 1);
+		list.remove(list.size() - 1);
 		assertEquals(0, list.size());
 	}
 	
@@ -173,24 +177,24 @@ public class SortedListTest {
 		try {
 			assertEquals(list.indexOf("cat") , -1);
 			list.add("This");
-			list.add("is");
+			list.add("Is");
 			list.add("Booty");
-			assertEquals(list.indexOf("This"), 0);
+			assertEquals(list.indexOf("This"), 2);
 			assertEquals(list.indexOf("Hello"), -1);
-			assertFalse(list.indexOf(null));
+			assertEquals(list.indexOf(null), -1);
 			fail();
 		} catch (NullPointerException e) {
 			
 		}
 		
-		//TODO Test indexOf on an empty list
+		//Test indexOf on an empty list
 		
-		//TODO Add some elements
+		//Add some elements
 		
-		//TODO Test various calls to indexOf for elements in the list
+		//Test various calls to indexOf for elements in the list
 		//and not in the list
 		
-		//TODO Test checking the index of null
+		//Test checking the index of null
 		
 	}
 	
@@ -217,14 +221,12 @@ public class SortedListTest {
 	@Test
 	public void testIsEmpty() {
 		SortedList<String> list = new SortedList<String>();
+		//Test that the list starts empty
 		assertTrue(list.isEmpty());
+		//Add at least one element
 		list.add("Hello");
+		//Check that the list is no longer empty
 		assertFalse(list.isEmpty());
-		//TODO Test that the list starts empty
-		
-		//TODO Add at least one element
-		
-		//TODO Check that the list is no longer empty
 	}
 
 	/**
