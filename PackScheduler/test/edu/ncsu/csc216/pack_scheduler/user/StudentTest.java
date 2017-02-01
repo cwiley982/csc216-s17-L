@@ -311,7 +311,7 @@ public class StudentTest {
 		assertNotEquals(s1.hashCode(), s6.hashCode());
 		assertNotEquals(s1.hashCode(), s7.hashCode());
 		assertNotEquals(s1.hashCode(), s8.hashCode());
-		
+		 
 	}
 	
 	@Test
