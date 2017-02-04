@@ -185,9 +185,9 @@ public class StudentDirectoryTest {
 		assertTrue(sd.removeStudent("efrost"));
 		String [][] studentDirectory = sd.getStudentDirectory();
 		assertEquals(9, studentDirectory.length);
-		assertEquals("Lane", studentDirectory[5][0]);
-		assertEquals("Berg", studentDirectory[5][1]);
-		assertEquals("lberg", studentDirectory[5][2]);
+ 		assertEquals("Austin", studentDirectory[0][1]);
+ 		assertEquals("Berg", studentDirectory[1][1]);
+ 		assertEquals("Brennan", studentDirectory[2][1]);
 	}
 
 	/**
