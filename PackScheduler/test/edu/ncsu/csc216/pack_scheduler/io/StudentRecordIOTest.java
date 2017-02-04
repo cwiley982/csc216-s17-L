@@ -7,12 +7,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import edu.ncsu.csc216.collections.list.SortedList;
 import edu.ncsu.csc216.pack_scheduler.user.Student;
 
 
@@ -71,15 +71,12 @@ public class StudentRecordIOTest {
 	@Test
 	public void testReadValidStudentRecords() {
 		try {
-			ArrayList<Student> students = StudentRecordIO.readStudentRecords(validTestFile);
+			SortedList<Student> students = StudentRecordIO.readStudentRecords(validTestFile);
 			assertEquals(10, students.size());
 			
-			for (int i = 0; i < validStudents.length; i++) {
-				assertEquals(validStudents[i], students.get(i).toString());
-			}
-//			assertEquals("King", students.get(0).getLastName());
-//			assertEquals("Schwartz", students.get(1).getLastName());
-//			assertEquals("Hansen", students.get(2).getLastName());
+			assertEquals("Austin", students.get(0).getLastName());
+			assertEquals("Berg", students.get(1).getLastName());
+			assertEquals("Brennan", students.get(2).getLastName());
 		} catch (FileNotFoundException e) {
 			fail("Unexpected error reading " + validTestFile);
 		}
@@ -90,7 +87,7 @@ public class StudentRecordIOTest {
 	 */
 	@Test
 	public void testReadInvalidStudentRecords(){
-		ArrayList<Student> students = new ArrayList<Student>();
+		SortedList<Student> students = new SortedList<Student>();
 		try {
 			students = StudentRecordIO.readStudentRecords(invalidTestFile);
 			assertEquals(0, students.size());
@@ -133,7 +130,7 @@ public class StudentRecordIOTest {
 	 */
 	@Test
 	public void testWriteStudentRecordsNoPermissions() {
-	    ArrayList<Student> students = new ArrayList<Student>();
+	    SortedList<Student> students = new SortedList<Student>();
 	    students.add(new Student("Zahir", "King", "zking", "orci.Donec@ametmassaQuisque.com", hashPW, 15));
 	    //Assumption that you are using a hash of "pw" stored in hashPW
 	    
@@ -142,11 +139,9 @@ public class StudentRecordIOTest {
 	        fail("Attempted to write to a directory location that doesn't exist or without the appropriate permissions and the write happened.");
 	    } catch (IOException e) {
 	        assertEquals("/home/sesmith5/actual_student_records.txt (Permission denied)", e.getMessage());
-	        //The actual error message on Jenkins!
 	    }
 	    
-	    checkFiles("test-files/expected_student_records.txt", "test-files/actual_student_records.txt");
-	    
+	    checkFiles("ts-test-files/expected_student_records.txt", "ts-test-files/actual_student_records.txt");
 	}
 
 }

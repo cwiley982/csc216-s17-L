@@ -241,25 +241,25 @@ public class Student implements Comparable<Student>{
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
-		if (firstName == null) {
+/*		if (firstName == null) {
 			if (other.firstName != null)
 				return false;
-		} else if (!firstName.equals(other.firstName))
+		} else */if (!firstName.equals(other.firstName))
 			return false;
-		if (password == null) {
+/*		if (password == null) {
 			if (other.password != null)
 				return false;
-		} else if (!password.equals(other.password))
+		} else */if (!password.equals(other.password))
 			return false;
-		if (id == null) {
+/*		if (id == null) {
 			if (other.id != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else */if (!id.equals(other.id))
 			return false;
-		if (lastName == null) {
+/*		if (lastName == null) {
 			if (other.lastName != null)
 				return false;
-		} else if (!lastName.equals(other.lastName))
+		} else */if (!lastName.equals(other.lastName))
 			return false;
 		if (maxCredits != other.maxCredits)
 			return false;

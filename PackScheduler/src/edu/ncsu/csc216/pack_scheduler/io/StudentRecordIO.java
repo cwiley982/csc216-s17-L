@@ -5,11 +5,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-
+import edu.ncsu.csc216.collections.list.SortedList;
 import edu.ncsu.csc216.pack_scheduler.user.Student;
 
 /**
@@ -31,10 +30,10 @@ public class StudentRecordIO {
 	 * @throws FileNotFoundException
 	 *             if file cannot be accessed
 	 */
-	public static ArrayList<Student> readStudentRecords(String fileName) throws FileNotFoundException {
+	public static SortedList<Student> readStudentRecords(String fileName) throws FileNotFoundException {
 		Student s = null;
 		Scanner fileReader = new Scanner(new FileInputStream(fileName));
-		ArrayList<Student> students = new ArrayList<Student>();
+		SortedList<Student> students = new SortedList<Student>();
 		while (fileReader.hasNextLine()) {
 
 			try {
@@ -56,15 +55,15 @@ public class StudentRecordIO {
 	 * 
 	 * @param fileName
 	 *            file to write to
-	 * @param studentDirectory
+	 * @param students
 	 *            array list of students
 	 * @throws IOException
 	 *             if file can't be written to
 	 */
-	public static void writeStudentRecords(String fileName, ArrayList<Student> studentDirectory) throws IOException {
+	public static void writeStudentRecords(String fileName, SortedList<Student> students) throws IOException {
 		PrintStream writer = new PrintStream(new File(fileName));
-		for (int i = 0; i < studentDirectory.size(); i++) {
-			writer.println(studentDirectory.get(i).toString());
+		for (int i = 0; i < students.size(); i++) {
+			writer.println(students.get(i).toString());
 		}
 		writer.close();
 

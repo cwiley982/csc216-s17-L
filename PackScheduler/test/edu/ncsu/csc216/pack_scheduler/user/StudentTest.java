@@ -320,11 +320,15 @@ public class StudentTest {
 		Student s2 = new Student("Kevin", "Li", "kli11", EMAIL, PASSWORD, MAX_CREDITS); 
 		Student s3 = new Student("Abc", "Aa", "aaa", EMAIL, PASSWORD, MAX_CREDITS); 
 		Student s4 = new Student("Xyz", "Aa", "xaa", EMAIL, PASSWORD, MAX_CREDITS); 
+		Student s5 = new Student("Kevin", "Li", "kli8", EMAIL, PASSWORD, MAX_CREDITS);
+		Student s6 = new Student("Aevin", "Li", "ali8", EMAIL, PASSWORD, MAX_CREDITS);
 
 		assertEquals(-1, s1.compareTo(s2));
 		assertEquals(1, s2.compareTo(s1));
 		assertEquals(-1, s3.compareTo(s2));
 		assertEquals(1, s1.compareTo(s4));
+		assertEquals(-1, s5.compareTo(s1));
+		assertEquals(-1, s6.compareTo(s1));
 	}
 
 }
