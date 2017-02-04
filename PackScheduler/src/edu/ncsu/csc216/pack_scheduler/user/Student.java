@@ -79,7 +79,7 @@ public class Student implements Comparable<Student>{
 	 */
 	public void setFirstName(String firstName) {
 		if (firstName == null || firstName.equals("")) {
-			throw new IllegalArgumentException("No first name set.");
+			throw new IllegalArgumentException("Invalid first name");
 		}
 		this.firstName = firstName;
 	}
@@ -100,7 +100,7 @@ public class Student implements Comparable<Student>{
 	 */
 	public void setLastName(String lastName) {
 		if (lastName == null || lastName.equals("")) {
-			throw new IllegalArgumentException("No last name set.");
+			throw new IllegalArgumentException("Invalid last name");
 		}
 		this.lastName = lastName;
 	}
@@ -122,7 +122,7 @@ public class Student implements Comparable<Student>{
 	 */
 	private void setId(String id) {
 		if (id == null || id.equals("")) {
-			throw new IllegalArgumentException("No id set.");
+			throw new IllegalArgumentException("Invalid Id");
 		}
 		this.id = id;
 	}
@@ -144,10 +144,10 @@ public class Student implements Comparable<Student>{
 	 */
 	public void setEmail(String email) {
 		if (email == null || email.equals("")) {
-			throw new IllegalArgumentException("No email entered.");
+			throw new IllegalArgumentException("Invalid email");
 		}
 		if (email.indexOf("@") == -1 || email.indexOf(".") == -1) {
-			throw new IllegalArgumentException("Incorrect email adress.");
+			throw new IllegalArgumentException("Invalid email");
 		}
 		String a = "";
 		for (int i = email.length() - 1; i >= 0; i--) {
@@ -190,7 +190,7 @@ public class Student implements Comparable<Student>{
 	 */
 	public void setMaxCredits(int maxCredits) {
 		if (maxCredits < 3 || maxCredits > 18) {
-			throw new IllegalArgumentException("Max credits must be a positive number between 3 and 18.");
+			throw new IllegalArgumentException("Invalid max credits");
 		}
 		this.maxCredits = maxCredits;
 	}
