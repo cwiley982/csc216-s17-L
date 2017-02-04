@@ -122,7 +122,7 @@ public class Student implements Comparable<Student>{
 	 */
 	private void setId(String id) {
 		if (id == null || id.equals("")) {
-			throw new IllegalArgumentException("Invalid Id");
+			throw new IllegalArgumentException("Invalid id");
 		}
 		this.id = id;
 	}
@@ -177,7 +177,7 @@ public class Student implements Comparable<Student>{
 	 */
 	public void setPassword(String password) {
 		if (password == null || password.equals("")) {
-			throw new IllegalArgumentException("Invalid Password");
+			throw new IllegalArgumentException("Invalid password");
 		}
 		this.password = password;
 	}
