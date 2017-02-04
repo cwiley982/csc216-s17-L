@@ -314,6 +314,9 @@ public class StudentTest {
 		 
 	}
 	
+	/**
+	 * Test Student.compareTo()	method.
+	 */
 	@Test
 	public void testCompareTo(){
 		Student s1 = new Student("Kevin", "Li", "kli9", EMAIL, PASSWORD, MAX_CREDITS); 

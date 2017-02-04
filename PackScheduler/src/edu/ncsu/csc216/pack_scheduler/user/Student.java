@@ -8,7 +8,7 @@ package edu.ncsu.csc216.pack_scheduler.user;
  * @author Spencer Otten
  *
  */
-public class Student implements Comparable<Student>{
+public class Student implements Comparable<Student> {
 
 	/** First name of the student */
 	private String firstName;
@@ -154,7 +154,7 @@ public class Student implements Comparable<Student>{
 			a += email.charAt(i);
 		}
 		if (a.indexOf(".") > a.indexOf("@")) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid email");
 		}
 
 		this.email = email;
