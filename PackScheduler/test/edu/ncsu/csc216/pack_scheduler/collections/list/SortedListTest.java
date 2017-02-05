@@ -6,6 +6,13 @@ import org.junit.Test;
 
 import edu.ncsu.csc216.collections.list.SortedList;
 
+/**
+ * Tests the sorted list functionality
+ * @author Spencer Otten
+ * @author Caitlyn Wiley
+ * @author Kaiwen Li
+ *
+ */
 public class SortedListTest {
 
 	/**
@@ -83,7 +90,7 @@ public class SortedListTest {
 		try {
 			assertEquals("", list.get(0));
 		} catch(IndexOutOfBoundsException e) {
-			
+			throw new IllegalArgumentException("List is empty.");
 		}
 		list.add("This");
 		list.add("is");
@@ -92,28 +99,15 @@ public class SortedListTest {
 			assertEquals(list.get(-1), "");
 			fail();
 		} catch (IndexOutOfBoundsException e) {
-			
+			throw new IllegalArgumentException("Index is out of bounds.");
 		}
 		try {
 			assertEquals(list.get(list.size()), "");
 			fail();
 		} catch (IndexOutOfBoundsException e)  {
-			
+			throw new IllegalArgumentException("Index is out of bounds.");
 		}
 		
-		
-		//Since get() is used throughout the tests to check the
-		//contents of the list, we don't need to test main flow functionality
-		//here.  Instead this test method should focus on the error 
-		//and boundary cases.
-		
-		//Test getting an element from an empty list
-		
-		//Add some elements to the list
-		
-		//Test getting an element at an index < 0
-		
-		//Test getting an element at size
 		
 	}
 	
@@ -184,17 +178,8 @@ public class SortedListTest {
 			assertEquals(list.indexOf(null), -1);
 			fail();
 		} catch (NullPointerException e) {
-			
+			throw new IllegalArgumentException("The string is not in the list.");
 		}
-		
-		//Test indexOf on an empty list
-		
-		//Add some elements
-		
-		//Test various calls to indexOf for elements in the list
-		//and not in the list
-		
-		//Test checking the index of null
 		
 	}
 	

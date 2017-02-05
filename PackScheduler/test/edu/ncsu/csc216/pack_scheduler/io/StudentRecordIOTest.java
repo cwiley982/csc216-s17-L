@@ -83,7 +83,7 @@ public class StudentRecordIOTest {
 	}
 	
 	/**
-	 * Tests readStuedntRecords() with a file of invalid students
+	 * Tests readStudentRecords() with a file of invalid students
 	 */
 	@Test
 	public void testReadInvalidStudentRecords(){
