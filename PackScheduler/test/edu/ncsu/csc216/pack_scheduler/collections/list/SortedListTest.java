@@ -88,9 +88,9 @@ public class SortedListTest {
 	public void testGet() {
 		SortedList<String> list = new SortedList<String>();
 		try {
-			assertEquals("", list.get(0));
+			list.get(0);
 		} catch(IndexOutOfBoundsException e) {
-			throw new IndexOutOfBoundsException();
+			assertEquals(0, list.size());
 		}
 		list.add("This");
 		list.add("is");
@@ -99,13 +99,13 @@ public class SortedListTest {
 			assertEquals(list.get(-1), "");
 			fail();
 		} catch (IndexOutOfBoundsException e) {
-			throw new IllegalArgumentException("Index is out of bounds.");
+			assertEquals(3, list.size());
 		}
 		try {
 			assertEquals(list.get(list.size()), "");
 			fail();
 		} catch (IndexOutOfBoundsException e)  {
-			throw new IllegalArgumentException("Index is out of bounds.");
+			assertEquals(3, list.size());
 		}
 		
 		
@@ -178,7 +178,7 @@ public class SortedListTest {
 			assertEquals(list.indexOf(null), -1);
 			fail();
 		} catch (NullPointerException e) {
-			throw new NullPointerException();
+			assertEquals(3, list.size());
 		}
 		
 	}
