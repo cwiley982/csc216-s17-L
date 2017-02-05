@@ -90,8 +90,7 @@ public class SortedListTest {
 		try {
 			assertEquals("", list.get(0));
 		} catch(IndexOutOfBoundsException e) {
-			fail();
-			throw new IllegalArgumentException("List is empty.");
+			throw new IndexOutOfBoundsException();
 		}
 		list.add("This");
 		list.add("is");
@@ -179,8 +178,7 @@ public class SortedListTest {
 			assertEquals(list.indexOf(null), -1);
 			fail();
 		} catch (NullPointerException e) {
-			fail();
-			throw new IllegalArgumentException("The string is not in the list.");
+			throw new NullPointerException();
 		}
 		
 	}
