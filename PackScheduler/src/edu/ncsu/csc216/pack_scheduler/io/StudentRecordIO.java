@@ -22,7 +22,7 @@ public class StudentRecordIO {
 
 
 	/**
-	 * Reads a record of students and lists students in an array list
+	 * Reads a record of students and lists students in a sorted list
 	 * 
 	 * @param fileName
 	 *            the file to be read
