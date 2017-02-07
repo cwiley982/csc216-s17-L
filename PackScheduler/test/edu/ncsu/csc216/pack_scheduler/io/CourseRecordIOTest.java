@@ -107,7 +107,7 @@ public class CourseRecordIOTest {
 		
 		checkFiles("test-files/expected_course_records.txt", "test-files/actual_course_records.txt");
 	}
-
+  
 	/**
 	 * Helper method to compare two files for the same contents
 	 * @param expFile expected output
