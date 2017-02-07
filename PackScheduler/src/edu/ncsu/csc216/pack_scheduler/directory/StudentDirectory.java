@@ -96,7 +96,7 @@ public class StudentDirectory {
 			if (s.getId().equals(student.getId())) {
 				return false;
 			}
-		}
+		} 
 		return studentDirectory.add(student);
 	}
 	
