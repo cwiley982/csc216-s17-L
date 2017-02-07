@@ -63,7 +63,7 @@ public class CourseCatalog {
 	 * @return
 	 */
 	public boolean addCoursesToCatalog(String name, String title, String section, int credits, String instructorId, String meetingDays, int startTime, int endTime) {
-		
+		return false;
 	}
 	
 	/**
@@ -74,7 +74,7 @@ public class CourseCatalog {
 	 * @return
 	 */
 	public boolean removeCourseFromCatalog(String name, String section) {
-		
+		return false;
 	}
 	
 	/**
@@ -85,7 +85,7 @@ public class CourseCatalog {
 	 * @return
 	 */
 	public Course getCourseFromCatalog(String name, String section) {
-		
+		return null;
 	}
 	
 	/**
@@ -93,7 +93,7 @@ public class CourseCatalog {
 	 * @return
 	 */
 	public String[][] getCourseCatalog() {
-		
+		return null;
 	}
 	
 	/**
