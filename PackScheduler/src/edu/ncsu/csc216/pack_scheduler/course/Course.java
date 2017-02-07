@@ -8,7 +8,7 @@ package edu.ncsu.csc216.pack_scheduler.course;
  * @author Kaiwen Li
  *
  */
-public class Course extends Activity {
+public class Course extends Activity implements Comparable<Course> {
 	/** Length of a section. */
 	private static final int SECTION_LENGTH = 3;
 	/** Maximum length for a name. */
@@ -307,6 +307,25 @@ if (!title.equals(other.title))
 		} else if (!title.equals(other.title))
 			return false;
 		return true;
+	}
+	
+	/**
+	 * Compares this course to another course 
+	 * @return -1 if this course is before the other, 0 if they are
+	 * 		equal, 1 if it is after
+	 */
+	public int compareTo(Course o) {
+		String c1 = getName();
+		String c2 = o.getName();
+		String s1 = getSection();
+		String s2 = o.getSection();
+	
+		if (c1.compareTo(c2) == 0){
+			return s1.compareTo(s2);
+		} else {
+			return c1.compareTo(c2);
+		}
+		
 	}
 
 
