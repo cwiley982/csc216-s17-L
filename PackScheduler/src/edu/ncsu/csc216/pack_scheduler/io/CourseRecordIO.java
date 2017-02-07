@@ -1,4 +1,4 @@
-package edu.ncsu.csc216.pack_scheduler.io;
+package edu.ncsu.csc216.wolf_scheduler.io;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,8 +9,7 @@ import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-import edu.ncsu.csc216.pack_scheduler.course.Activity;
-import edu.ncsu.csc216.pack_scheduler.course.Course;
+import edu.ncsu.csc216.wolf_scheduler.course.Course;
 
 /**
  * Reads Course records from text files.  Writes a set of CourseRecords to a file.
@@ -109,22 +108,9 @@ public class CourseRecordIO {
     
 
     }
+    
+    
+    
+    
 
-	/**
-	 * Writes the given list of Courses to 
-	 * @param fileName input filename 
-	 * @param activities course catalog
-	 * @throws IOException
-	 */
-	public static void writeActivityRecords(String fileName, ArrayList<Activity> activities) throws IOException {
-		PrintStream fileWriter = new PrintStream(new File(fileName));
-	
-		for (int i = 0; i < activities.size(); i++) {
-		    fileWriter.println(activities.get(i).toString());
-		}
-	
-		fileWriter.close();
-	    
-	}
-
-    }
+}

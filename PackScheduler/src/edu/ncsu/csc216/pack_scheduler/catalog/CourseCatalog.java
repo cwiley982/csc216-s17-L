@@ -6,8 +6,8 @@ package edu.ncsu.csc216.pack_scheduler.catalog;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 
+import edu.ncsu.csc216.collections.list.SortedList;
 import edu.ncsu.csc216.pack_scheduler.course.Activity;
 import edu.ncsu.csc216.pack_scheduler.course.ConflictException;
 import edu.ncsu.csc216.pack_scheduler.course.Course;
@@ -18,229 +18,87 @@ import edu.ncsu.csc216.pack_scheduler.io.CourseRecordIO;
  * Handle the schedule 
  * @author Kaiwen Li
  *
- */	
+ */
 public class CourseCatalog {
-	private String title;
-	private ArrayList<Activity> schedule;
-	private ArrayList<Course> catalog;
 	
-	
-	/**
-	 * Constructor 
-	 * @param fileName input filename
-	 */
-	public CourseCatalog(String fileName) {
-		try {
-			setCatalog(CourseRecordIO.readCourseRecords(fileName));
-		} catch (FileNotFoundException e) {
-			throw new IllegalArgumentException("Cannot find file");
-		}
-		resetSchedule();
-		setTitle("My Schedule");
-	}
-
-	/**
-	 * Get schedule.
-	 * @return the schedule
-	 */
-	public ArrayList<Activity> getSchedule() {
-		return schedule;
-	}
-
-	/** 
-	 * Set new Schedule.
-	 * @param schedule the schedule to set
-	 */
-	public void setSchedule(ArrayList<Activity> schedule) {
-		this.schedule = schedule;
-	}
-
-	/** 
-	 * Get the catalog
-	 * @return the catalog
-	 */
-	public ArrayList<Course> getCatalog() {
-		return catalog;
-	}
-
-	/**
-	 * Set new catalog
-	 * @param arrayList the catalog to set
-	 */
-	public void setCatalog(ArrayList<Course> arrayList) {
-		this.catalog = arrayList;
-	}
+	/** a CourseCatalog has a SortedList of Courses that make up the catalog */
+	private SortedList<Course> catalog;
 	
 	/**
-	 * Put catalog into a 2D array
-	 * @return catalog in 2D array 	
+	 * constructs an empty catalog
 	 */
-	public String[][] getCourseCatalog() {
-		String[][] c = new String[catalog.size()][4];
-		for (int i = 0; i < catalog.size(); i++) {
-			c[i][0] = catalog.get(i).getName();
-			c[i][1] = catalog.get(i).getSection();
-			c[i][2] = catalog.get(i).getTitle();
-			c[i][3] = catalog.get(i).getMeetingString();
-		}
-		return c;
-	}
-	
-	/**
-	 * Put schedule into a 2D array
-	 * @return schedule in 2D array
-	 */
-	public String[][] getScheduledActivities() {
-		String[][] c = new String[schedule.size()][4];
-		for (int i = 0; i < schedule.size(); i++) {
-			c[i] = schedule.get(i).getShortDisplayArray();
-		}
-		return c;
-	}
-	
-	/**
-	 * Put full schedule in 2D array
-	 * @return full schedule in 2D array
-	 */
-	public String[][] getFullScheduledActivities() {
-		String[][] c = new String[schedule.size()][7];
-		for (int i = 0; i < schedule.size(); i++) {
-			c[i] = schedule.get(i).getLongDisplayArray();
-		}
-		return c;
-	}
-	
-	/**
-	 * Get tile of the schedule
-	 * @return title of the schedule
-	 */
-	public String getTitle() {
-		
-		return title;
-	}
-	
-	/**
-	 * Export the schedule
-	 * @param fileName output file name
-	 */
-	public void exportSchedule(String fileName) {
-		try {
-			CourseRecordIO.writeActivityRecords(fileName, schedule);
-		} catch (IOException e) {
-			throw new IllegalArgumentException("The file cannot be saved.");
-		}
+	public CourseCatalog() {
 		
 	}
 	
 	/**
-	 * Get Course from catalog
-	 * @param name name of the course
-	 * @param section section of the course
-	 * @return a Course object
+	 * constructs an empty catalog
+	 */
+	public void newCourseCatalog() {
+		
+	}
+	
+	/**
+	 * loads course records into the catalog. Any FileNotFoundExceptions are caught and an  IllegalArgumentException is thrown to the client.
+	 * @param fileName
+	 */
+	public void loadCoursesFromFile(String fileName) {
+		
+	}
+	
+	/**
+	 * Adds a Course with the following fields to the catalog and returns true if the Course is 
+	 * added and false if the Course already exists in the catalog. If there is an error 
+	 * constructing the Course, the IllegalArgumentException is allowed to propagate to the client.
+	 * @param name
+	 * @param title
+	 * @param section
+	 * @param credits
+	 * @param instructorId
+	 * @param meetingDays
+	 * @param startTime
+	 * @param endTime
+	 * @return
+	 */
+	public boolean addCoursesToCatalog(String name, String title, String section, int credits, String instructorId, String meetingDays, int startTime, int endTime) {
+		
+	}
+	
+	/**
+	 * returns true if the Course is removed from the catalog and false if the Course is not in the 
+	 * catalog.
+	 * @param name
+	 * @param section
+	 * @return
+	 */
+	public boolean removeCourseFromCatalog(String name, String section) {
+		
+	}
+	
+	/**
+	 * returns the Course from the catalog with the given name and section. Returns null if the 
+	 * Course isn't in the catalog.
+	 * @param name
+	 * @param section
+	 * @return
 	 */
 	public Course getCourseFromCatalog(String name, String section) {
-		for (int i = 0; i < catalog.size(); i++) {
-			if (catalog.get(i).getName().equals(name) && catalog.get(i).getSection().equals(section)) {
-				return catalog.get(i);
-			}
-		}
-		return null;
-	}
-	
-	/**
-	 * Add a course
-	 * @param name name of the course
-	 * @param section section of the course
-	 * @return true if the action is valid
-	 */
-	public boolean addCourse(String name, String section) {
-		Course c = null;
-		for (int i = 0; i < schedule.size(); i++) {
-			if (schedule.get(i) instanceof Course) {
-				c = (Course) schedule.get(i);
-			
-			if (c.getName().equals(name)) {
-				throw new IllegalArgumentException("You are already enrolled in " + name );
-			}
-		}
-		}
-		for (int i = 0; i < catalog.size(); i++) {
-			if (catalog.get(i).getName().equals(name) && catalog.get(i).getSection().equals(section)) {
-				for (int j = 0; j < schedule.size(); j++) {
-					if (schedule.get(j).isDuplicate(catalog.get(i))) {
-						return false;
-					}
-					
-					if (!catalog.get(i).getMeetingDays().equals("A")) {
-						try {
-							schedule.get(j).checkConflict(catalog.get(i));
-						} catch (ConflictException e) {
-							throw new IllegalArgumentException("The course cannot be added due to a conflict.");
-						}
-					}
-				}
-				schedule.add(schedule.size(), catalog.get(i));
-				return true;
-			} 
-		}
-		return false;
-	}
-	
-	/**
-	 * Remove a course
-	 * @param idx index
-	 * @return true if the action is valid
-	 */
-	public boolean removeActivity(int idx) {
-		if (idx >= 0 && idx < schedule.size()) {
-			schedule.remove(idx);
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	/**
-	 * reset the schedule
-	 */
-	public void resetSchedule() {
-		this.schedule = new ArrayList<Activity>(0);
-	}
-	
-	/**
-	 * Set new title 
-	 * @param title new title to set
-	 */
-	public void setTitle(String title) {
-		if (title == null) {
-			throw new IllegalArgumentException("Title cannot be null.");
-		}
-		this.title = title;
 		
 	}
+	
 	/**
-	 * Add an Event	
-	 * @param title event title	
-	 * @param meetingDays event meeting days
-	 * @param startTime event start time
-	 * @param endTime event end time
-	 * @param weeklyRepeat weekly repeat of the event
-	 * @param eventDetails details
+	 * returns the name, section, title, and meeting information for Courses in the catalog.
+	 * @return
 	 */
-	public void addEvent(String title, String meetingDays, int startTime, int endTime, int weeklyRepeat, String eventDetails){
-		Event e1 = new Event(title, meetingDays, startTime, endTime, weeklyRepeat, eventDetails);
-		for(int i = 0; i < schedule.size(); i++){
-			if(title.equals(schedule.get(i).getTitle())){
-				throw new IllegalArgumentException("You have already created an event called " + title);
-			}
-			try {
-				e1.checkConflict(schedule.get(i));
-			} catch (ConflictException e) {
-				throw new IllegalArgumentException("The event cannot be added due to a conflict.");
-			}
-		}
+	public String[][] getCourseCatalog() {
 		
-		schedule.add(e1);
 	}
 	
+	/**
+	 * saves the catalog course records to the given file. Any IOExceptions are caught and an IllegalArgumentException is thrown to the client.
+	 * @param fileName
+	 */
+	public void saveCourseCatalog(String fileName) {
+		
+	}
 }
