@@ -17,6 +17,8 @@ import edu.ncsu.csc216.pack_scheduler.io.CourseRecordIO;
 /**
  * Handle the schedule 
  * @author Kaiwen Li
+ * @author Caitlyn Wiley
+ * @author Spencer Otten
  *
  */
 public class CourseCatalog {
