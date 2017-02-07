@@ -1,4 +1,4 @@
-package edu.ncsu.csc216.wolf_scheduler.io;
+package edu.ncsu.csc216.pack_scheduler.io;
 
 import static org.junit.Assert.*;
 
@@ -14,8 +14,8 @@ import java.util.Scanner;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.ncsu.csc216.wolf_scheduler.course.Course;
-import edu.ncsu.csc216.wolf_scheduler.io.CourseRecordIO;
+import edu.ncsu.csc216.pack_scheduler.course.Course;
+import edu.ncsu.csc216.pack_scheduler.io.CourseRecordIO;
 
 /**
  * Tests CouresRecordIO.

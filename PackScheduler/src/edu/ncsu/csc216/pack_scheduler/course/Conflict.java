@@ -1,7 +1,7 @@
 /**
  *  import package
  */
-package edu.ncsu.csc216.wolf_scheduler.course;
+package edu.ncsu.csc216.pack_scheduler.course;
 
 /**
  * Define the conflict activity within the schedule

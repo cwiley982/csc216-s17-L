@@ -1,4 +1,4 @@
-package edu.ncsu.csc216.wolf_scheduler.io;
+package edu.ncsu.csc216.pack_scheduler.io;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,7 +9,7 @@ import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-import edu.ncsu.csc216.wolf_scheduler.course.Course;
+import edu.ncsu.csc216.pack_scheduler.course.Course;
 
 /**
  * Reads Course records from text files.  Writes a set of CourseRecords to a file.
