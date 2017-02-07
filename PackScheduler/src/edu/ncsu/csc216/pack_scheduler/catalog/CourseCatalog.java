@@ -12,14 +12,13 @@ import edu.ncsu.csc216.pack_scheduler.course.Activity;
 import edu.ncsu.csc216.pack_scheduler.course.ConflictException;
 import edu.ncsu.csc216.pack_scheduler.course.Course;
 import edu.ncsu.csc216.pack_scheduler.course.Event;
-import edu.ncsu.csc216.pack_scheduler.io.ActivityRecordIO;
 import edu.ncsu.csc216.pack_scheduler.io.CourseRecordIO;
 
 /**
  * Handle the schedule 
  * @author Kaiwen Li
  *
- */
+ */	
 public class CourseCatalog {
 	private String title;
 	private ArrayList<Activity> schedule;
@@ -126,7 +125,7 @@ public class CourseCatalog {
 	 */
 	public void exportSchedule(String fileName) {
 		try {
-			ActivityRecordIO.writeActivityRecords(fileName, schedule);
+			CourseRecordIO.writeActivityRecords(fileName, schedule);
 		} catch (IOException e) {
 			throw new IllegalArgumentException("The file cannot be saved.");
 		}
