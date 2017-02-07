@@ -30,14 +30,14 @@ public class CourseCatalog {
 	 * constructs an empty catalog
 	 */
 	public CourseCatalog() {
-		
+		catalog = new SortedList<Course>();
 	}
 	
 	/**
 	 * constructs an empty catalog
 	 */
 	public void newCourseCatalog() {
-		
+		catalog = new SortedList<Course>();
 	}
 	
 	/**
