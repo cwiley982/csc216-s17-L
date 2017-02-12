@@ -32,7 +32,7 @@ public class CourseRecordIO {
 	    while (fileReader.hasNextLine()) {
 	        try {
 	            Course course = readCourse(fileReader.nextLine());
-	            boolean duplicate = false;
+	            boolean duplicate = false; 
 	            for (int i = 0; i < courses.size(); i++) {
 	                Course c = courses.get(i);
 	                if (course.getName().equals(c.getName()) &&
