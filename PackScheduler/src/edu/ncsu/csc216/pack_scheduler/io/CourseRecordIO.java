@@ -73,38 +73,40 @@ public class CourseRecordIO {
         
     }
     
-    private static Course readCourse(String courseInfo){
-
-    	Scanner info = new Scanner(courseInfo);
-    	info.useDelimiter(",");
-    	Course c = null;
+    private static Course readCourse(String nextLine) {
+		Scanner lineScan = new Scanner(nextLine);
+		lineScan.useDelimiter(",");
+		Course course = null;
 		try {
-			String title = info.next();
-			String name = info.next();
-			String section = info.next();
-			int credit = info.nextInt();
-			String id = info.next();
-			String date = info.next();
-
-			if (date.equals("A")) {
-				c = new Course(title, name, section, credit, id, date);
-				info.close();
-
+			String name = lineScan.next();
+			String title = lineScan.next();
+			String section = lineScan.next();
+			int credits = lineScan.nextInt();
+			String instructorId = lineScan.next();
+			String meetingDays = lineScan.next();
+			int startTime = 0;
+			int endTime = 0;
+			if (meetingDays.equals("A")) {
+				try {
+					startTime = lineScan.nextInt();
+					endTime = lineScan.nextInt();
+					course = new Course(name, title, section, credits, instructorId, meetingDays, startTime, endTime);
+				} catch (NoSuchElementException e) {
+					course = new Course(name, title, section, credits, instructorId, meetingDays);
+				}
 			} else {
-				int startTime = info.nextInt();
-				int endTime = info.nextInt();
-				c = new Course(title, name, section, credit, id, date, startTime, endTime);
-				info.close();
-
+				startTime = lineScan.nextInt();
+				endTime = lineScan.nextInt();
+				course = new Course(name, title, section, credits, instructorId, meetingDays, 
+						startTime, endTime);
 			}
-		} catch (InputMismatchException e) {
-			// skip
+			lineScan.close();
+		} catch (NullPointerException e) {
+			throw new IllegalArgumentException();
 		} catch (NoSuchElementException e) {
-			// skip
+			throw new IllegalArgumentException();
 		}
-    	   	
-    	return c;
-    	
+		return course;
     }  
 
 }
