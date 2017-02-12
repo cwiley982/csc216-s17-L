@@ -135,7 +135,7 @@ public class Course extends Activity implements Comparable<Course> {
 			return false;
 		if (!title.equals(other.title))
 			return false;
-		return true;
+		return true; 
 	}
 
 	/**
