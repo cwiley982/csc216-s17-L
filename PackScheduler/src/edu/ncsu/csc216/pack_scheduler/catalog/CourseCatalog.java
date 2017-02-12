@@ -6,6 +6,7 @@ package edu.ncsu.csc216.pack_scheduler.catalog;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import edu.ncsu.csc216.collections.list.SortedList;
 import edu.ncsu.csc216.pack_scheduler.course.Activity;
@@ -45,7 +46,15 @@ public class CourseCatalog {
 	 * @param fileName
 	 */
 	public void loadCoursesFromFile(String fileName) {
-		
+		try {
+			ArrayList<Course> list = null;
+			list = CourseRecordIO.readCourseRecords(fileName);
+			for (int i = 0; i < list.size(); i++) {
+				catalog.add(list.get(i));
+			}
+		} catch (FileNotFoundException e) {
+			throw new IllegalArgumentException();
+		}
 	}
 	
 	/**
@@ -63,7 +72,16 @@ public class CourseCatalog {
 	 * @return
 	 */
 	public boolean addCoursesToCatalog(String name, String title, String section, int credits, String instructorId, String meetingDays, int startTime, int endTime) {
-		return false;
+		Course course = new Course(name, title, section, credits, instructorId, meetingDays, startTime, endTime);
+		
+		for (int i = 0; i < catalog.size(); i++) {
+			if (catalog.get(i).getName().equals(name) && catalog.get(i).getSection().equals(section)) {
+				return false;
+			}
+		}
+		
+		catalog.add(course);
+		return true;
 	}
 	
 	/**
@@ -74,6 +92,12 @@ public class CourseCatalog {
 	 * @return
 	 */
 	public boolean removeCourseFromCatalog(String name, String section) {
+		for (int i = 0; i < catalog.size(); i++) {
+			if (catalog.get(i).getName().equals(name) && catalog.get(i).getSection().equals(section)) {
+				catalog.remove(i);
+				return true;
+			}
+		}
 		return false;
 	}
 	
@@ -85,6 +109,11 @@ public class CourseCatalog {
 	 * @return
 	 */
 	public Course getCourseFromCatalog(String name, String section) {
+		for (int i = 0; i < catalog.size(); i++) {
+			if (catalog.get(i).getName().equals(name) && catalog.get(i).getSection().equals(section)) {
+				return catalog.get(i);
+			}
+		}
 		return null;
 	}
 	
@@ -93,7 +122,11 @@ public class CourseCatalog {
 	 * @return
 	 */
 	public String[][] getCourseCatalog() {
-		return null;
+		String[][] catalogArray = new String[catalog.size() - 1][4];
+		for (int i = 0; i < catalog.size(); i++) {
+			catalogArray[i] = catalog.get(i).getShortDisplayArray();
+		}
+		return catalogArray;
 	}
 	
 	/**
@@ -101,6 +134,14 @@ public class CourseCatalog {
 	 * @param fileName
 	 */
 	public void saveCourseCatalog(String fileName) {
-		
+		try {
+			ArrayList<Course> catalog2 = new ArrayList<Course>();
+			for (int i = 0; i < catalog.size(); i++ ){
+				catalog2.add(catalog.get(i));
+			}
+			CourseRecordIO.writeCourseRecords(fileName, catalog2);
+		} catch (IOException e) {
+			throw new IllegalArgumentException();
+		}
 	}
 }
