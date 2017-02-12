@@ -14,6 +14,8 @@ import org.junit.Test;
 import edu.ncsu.csc216.pack_scheduler.course.Course;
 
 /**
+ * Tests the CourseCatalog class
+ * 
  * @author Caitlyn Wiley
  *
  */
@@ -43,6 +45,9 @@ public class CourseCatalogTest {
 	/** Course end time */
 	private static final int END_TIME = 1445;
 		
+	/**
+	 * tests CourseCatalog.loadCoursesFromFile()
+	 */
 	@Test
 	public void testLoadCoursesFromFile() {
 		try {
@@ -69,6 +74,9 @@ public class CourseCatalogTest {
 		}
 	}
 
+	/**
+	 * tests CourseCatalog.addCourseToCatalog()
+	 */
 	@Test
 	public void testAddCourseToCatalog() {
 		CourseCatalog catalog = new CourseCatalog();
@@ -76,6 +84,9 @@ public class CourseCatalogTest {
 		assertEquals(catalog.getCourseCatalog().length, 1);
 	}
 	
+	/**
+	 * tests CourseCatalog.removeCourseFromCatalog()
+	 */
 	@Test
 	public void testRemoveCourseFromCatalog() {
 		CourseCatalog catalog = new CourseCatalog();
@@ -85,6 +96,9 @@ public class CourseCatalogTest {
 		assertEquals(catalog.getCourseCatalog().length, 1);
 	}
 	
+	/**
+	 * tests CourseCatalog.newCourseCatalog()
+	 */
 	@Test
 	public void testNewCourseCatalog() {
 		CourseCatalog catalog = new CourseCatalog();
@@ -94,6 +108,9 @@ public class CourseCatalogTest {
 		assertEquals(catalog.getCourseCatalog().length, 0);
 	}
 	
+	/**
+	 * tests CourseCatalog.getCourseFromCatalog()
+	 */
 	@Test
 	public void testGetCourseFromCatalog() {
 		CourseCatalog catalog = new CourseCatalog();
@@ -106,6 +123,9 @@ public class CourseCatalogTest {
 		assertEquals(catalog.getCourseFromCatalog(NAME, SECTION), course);
 	}
 	
+	/**
+	 * tests CourseCatalog.getCourseCatalog()
+	 */
 	@Test
 	public void testGetCourseCatalog() {
 		CourseCatalog catalog = new CourseCatalog();
@@ -120,12 +140,16 @@ public class CourseCatalogTest {
 		assertEquals(catalog.getCourseCatalog()[2][3], expectedArray[2][3]);
 	}
 	
+	/**
+	 * tests CourseCatalog.saveCourseCatalog()
+	 */
 	@Test
 	public void testSaveCourseCatalog() {
 		CourseCatalog catalog = new CourseCatalog();
 		catalog.addCourseToCatalog("CSC116", "Intro to Programming - Java", "001", 3, "jdyoung2", "MW", 910, 1100);
 		catalog.addCourseToCatalog("CSC116", "Intro to Programming - Java", "002", 3, "spbalik", "MW", 1120, 1310);
 		catalog.addCourseToCatalog("CSC116", "Intro to Programming - Java", "003", 3, "tbdimitr", "TH", 1120, 1310);
+		assertEquals(catalog.getCourseCatalog().length, 3);
 		catalog.saveCourseCatalog("test-files/actual_saved_course_catalog.txt");
 		checkFiles("test-files/actual_saved_course_catalog.txt", expectedCatalog);
 	}
