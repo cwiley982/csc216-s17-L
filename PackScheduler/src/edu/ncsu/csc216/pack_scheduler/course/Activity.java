@@ -3,7 +3,7 @@ package edu.ncsu.csc216.pack_scheduler.course;
 /**
  * Create an activity
  * 
- * @author Kaiwen Li 
+ * @author Kaiwen Li
  *
  */
 public abstract class Activity implements Conflict {
@@ -204,21 +204,6 @@ public abstract class Activity implements Conflict {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Activity other = (Activity) obj;
-		if (endTime != other.endTime)
-			return false;
-		if (meetingDays == null) {
-			if (other.meetingDays != null)
-				return false;
-		} else if (!meetingDays.equals(other.meetingDays))
-			return false;
-		if (startTime != other.startTime)
-			return false;
-		if (title == null) {
-			if (other.title != null)
-				return false;
-		} else if (!title.equals(other.title))
-			return false;
 		return true;
 	}
 
@@ -227,14 +212,14 @@ public abstract class Activity implements Conflict {
 	 * 
 	 * @param possibleConflictingActivity
 	 *            the activity to checked
-	 * @throws ConflictException if courses conflict
+	 * @throws ConflictException
+	 *             if courses conflict
 	 */
 	@Override
 	public void checkConflict(Activity possibleConflictingActivity) throws ConflictException {
 		if (getMeetingDays().equals("A") || possibleConflictingActivity.getMeetingDays().equals("A")) {
 			return;
 		}
-
 
 		for (int i = 0; i < getMeetingDays().length(); i++) {
 			for (int j = 0; j < possibleConflictingActivity.getMeetingDays().length(); j++) {
@@ -247,8 +232,9 @@ public abstract class Activity implements Conflict {
 							&& getEndTime() > possibleConflictingActivity.getStartTime()) {
 						throw new ConflictException();
 					}
-					
-					if (getStartTime() < possibleConflictingActivity.getStartTime() && getEndTime() > possibleConflictingActivity.getEndTime()) {
+
+					if (getStartTime() < possibleConflictingActivity.getStartTime()
+							&& getEndTime() > possibleConflictingActivity.getEndTime()) {
 						throw new ConflictException();
 					}
 
