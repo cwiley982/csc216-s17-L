@@ -60,7 +60,7 @@ public class CourseRecordIO {
      * Writes the given list of Courses to 
      * @param fileName input filename 
      * @param courses course catalog
-     * @throws IOException
+     * @throws IOException if file can't be written to
      */
     public static void writeCourseRecords(String fileName, ArrayList<Course> courses) throws IOException {
     	PrintStream fileWriter = new PrintStream(new File(fileName));

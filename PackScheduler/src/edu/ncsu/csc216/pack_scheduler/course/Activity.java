@@ -227,7 +227,7 @@ public abstract class Activity implements Conflict {
 	 * 
 	 * @param possibleConflictingActivity
 	 *            the activity to checked
-	 * @throws ConflictException
+	 * @throws ConflictException if courses conflict
 	 */
 	@Override
 	public void checkConflict(Activity possibleConflictingActivity) throws ConflictException {

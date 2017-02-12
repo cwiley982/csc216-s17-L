@@ -12,7 +12,7 @@ public interface Conflict {
 	/**
 	 * To check if two activities are conflict.
 	 * @param possibleConflictingActivity the target activity to be checked	
-	 * @throws ConflictException 
+	 * @throws ConflictException if courses conflict
 	 */
 	void checkConflict(Activity possibleConflictingActivity) throws ConflictException;
 	
