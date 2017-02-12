@@ -131,7 +131,7 @@ public class CourseCatalog {
 	 */
 	public void saveCourseCatalog(String fileName) {
 		try {
-			
+			 
 			CourseRecordIO.writeCourseRecords(fileName, catalog);
 		} catch (IOException e) {
 			throw new IllegalArgumentException();
