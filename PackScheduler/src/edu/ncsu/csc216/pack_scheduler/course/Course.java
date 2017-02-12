@@ -1,10 +1,8 @@
 package edu.ncsu.csc216.pack_scheduler.course;
 
-
-
 /**
- * Allow user to create a Course object
- * For further usage.
+ * Allow user to create a Course object For further usage.
+ * 
  * @author Kaiwen Li
  *
  */
@@ -27,58 +25,68 @@ public class Course extends Activity implements Comparable<Course> {
 	private int credits;
 	/** Course's instructor */
 	private String instructorId;
+
 	/**
 	 * Constructs a Course object with values for all fields.
-	 * @param name name of Course
-	 * @param title title of Course
-	 * @param section section of Course
-	 * @param credits credit hours for Course
-	 * @param instructorId instructor's unity id
-	 * @param meetingDays meeting days for Course as series of chars
-	 * @param startTime start time for Course
-	 * @param endTime end time for Course
+	 * 
+	 * @param name
+	 *            name of Course
+	 * @param title
+	 *            title of Course
+	 * @param section
+	 *            section of Course
+	 * @param credits
+	 *            credit hours for Course
+	 * @param instructorId
+	 *            instructor's unity id
+	 * @param meetingDays
+	 *            meeting days for Course as series of chars
+	 * @param startTime
+	 *            start time for Course
+	 * @param endTime
+	 *            end time for Course
 	 */
 	public Course(String name, String title, String section, int credits, String instructorId, String meetingDays,
-	        int startTime, int endTime) {
-	    if (title == null ||
-	    	section == null ||
-	    	credits < MIN_CREDITS ||
-	    	credits > MAX_CREDITS ||
-	    	instructorId == null ||
-	    	meetingDays == null ||
-	    	startTime > 2400 ||
-	    	endTime < startTime) {
-			
-	    	throw new IllegalArgumentException("Invalid parameter(s)");
+			int startTime, int endTime) {
+		if (title == null || section == null || credits < MIN_CREDITS || credits > MAX_CREDITS || instructorId == null
+				|| meetingDays == null || startTime > 2400 || endTime < startTime) {
+
+			throw new IllegalArgumentException("Invalid parameter(s)");
 		}
 		setName(name);
-	    setTitle(title);
-	    setSection(section);
-	    setCredits(credits);
-	    setInstructorId(instructorId);
-	    setMeetingDays(meetingDays);
-	    setActivityTime(startTime, endTime);
+		setTitle(title);
+		setSection(section);
+		setCredits(credits);
+		setInstructorId(instructorId);
+		setMeetingDays(meetingDays);
+		setActivityTime(startTime, endTime);
 	}
 
 	/**
-	 * Creates a Course with the given name, title, section, credits, instructorId, and meetingDays for 
-	 * courses that are arranged.
-	 * @param name name of Course
-	 * @param title title of Course
-	 * @param section section of Course
-	 * @param credits credit hours for Course
-	 * @param instructorId instructor's unity id
-	 * @param meetingDays meeting days for Course as series of chars
+	 * Creates a Course with the given name, title, section, credits,
+	 * instructorId, and meetingDays for courses that are arranged.
+	 * 
+	 * @param name
+	 *            name of Course
+	 * @param title
+	 *            title of Course
+	 * @param section
+	 *            section of Course
+	 * @param credits
+	 *            credit hours for Course
+	 * @param instructorId
+	 *            instructor's unity id
+	 * @param meetingDays
+	 *            meeting days for Course as series of chars
 	 */
 	public Course(String name, String title, String section, int credits, String instructorId, String meetingDays) {
 
 		this(name, title, section, credits, instructorId, meetingDays, 0, 0);
 	}
 
-	
-
 	/**
 	 * Generate a hashCode for course using all fields.
+	 * 
 	 * @return hashCode for course
 	 */
 	@Override
@@ -96,10 +104,11 @@ public class Course extends Activity implements Comparable<Course> {
 		return result;
 	}
 
-
 	/**
 	 * Compares a given object to this object for equality on all fields.
-	 * @param obj the object to compare
+	 * 
+	 * @param obj
+	 *            the object to compare
 	 * @return true if the objects are the same on all fields
 	 * 
 	 */
@@ -116,73 +125,75 @@ public class Course extends Activity implements Comparable<Course> {
 			return false;
 		if (endTime != other.endTime)
 			return false;
-		if (instructorId == null) {
-			if (other.instructorId != null)
-				return false;
-		} else if (!instructorId.equals(other.instructorId))
+		if (!instructorId.equals(other.instructorId))
 			return false;
-if (!meetingDays.equals(other.meetingDays))
+		if (!meetingDays.equals(other.meetingDays))
 			return false;
-if (!section.equals(other.section))
+		if (!section.equals(other.section))
 			return false;
 		if (startTime != other.startTime)
 			return false;
-if (!title.equals(other.title))
+		if (!title.equals(other.title))
 			return false;
 		return true;
 	}
-	
-	
-
 
 	/**
 	 * Returns a comma separated value String of all Course fields.
+	 * 
 	 * @return String representation of Course
 	 */
 	@Override
 	public String toString() {
-	    if (meetingDays.equals("A")) {
-	        return name + "," + title + "," + section + "," + credits + "," + instructorId + "," + meetingDays;
-	    }
-	    return name + "," + title + "," + section + "," + credits + "," + instructorId + "," + meetingDays + "," + startTime + "," + endTime; 
+		if (meetingDays.equals("A")) {
+			return name + "," + title + "," + section + "," + credits + "," + instructorId + "," + meetingDays;
+		}
+		return name + "," + title + "," + section + "," + credits + "," + instructorId + "," + meetingDays + ","
+				+ startTime + "," + endTime;
 	}
 
 	/**
 	 * Return course's name.
+	 * 
 	 * @return the name.
 	 */
 	public String getName() {
 		return name;
 	}
-	
+
 	/**
-	 * Sets the Course's name.  If the name is null, has a length less than 4 or 
+	 * Sets the Course's name. If the name is null, has a length less than 4 or
 	 * greater than 6, an IllegalArgumentException is thrown.
-	 * @param name the name to set
-	 * @throws IllegalArgumentException if name is null or length is less than 4 or 
-	 * greater than 6
+	 * 
+	 * @param name
+	 *            the name to set
+	 * @throws IllegalArgumentException
+	 *             if name is null or length is less than 4 or greater than 6
 	 */
 	private void setName(String name) {
-	    if (name == null) {
-	        throw new IllegalArgumentException();
-	    }
-	    if (name.length() < MIN_NAME_LENGTH || name.length() > MAX_NAME_LENGTH) {
-	        throw new IllegalArgumentException();
-	    }
-	    this.name = name;
+		if (name == null) {
+			throw new IllegalArgumentException();
+		}
+		if (name.length() < MIN_NAME_LENGTH || name.length() > MAX_NAME_LENGTH) {
+			throw new IllegalArgumentException();
+		}
+		this.name = name;
 	}
-	
+
 	/**
 	 * Return course's section.
+	 * 
 	 * @return the section.
 	 */
 	public String getSection() {
 		return section;
 	}
-	
+
 	/**
 	 * Set course's section.
-	 * @param section the new course section to set.
+	 * 
+	 * @param section
+	 *            the new course section to set.
 	 */
 	public void setSection(String section) {
 		if (section == null) {
@@ -193,18 +204,21 @@ if (!title.equals(other.title))
 		}
 		this.section = section;
 	}
-	
+
 	/**
 	 * Return the course's credit hours.
+	 * 
 	 * @return the credit hours.
 	 */
 	public int getCredits() {
 		return credits;
 	}
-	
+
 	/**
 	 * Set course's credit hour.
-	 * @param credits the new course credit hour to set.
+	 * 
+	 * @param credits
+	 *            the new course credit hour to set.
 	 */
 	public void setCredits(int credits) {
 		if (credits < MIN_CREDITS || credits > MAX_CREDITS) {
@@ -212,18 +226,21 @@ if (!title.equals(other.title))
 		}
 		this.credits = credits;
 	}
-	
+
 	/**
 	 * Return Instructor's unity id.
+	 * 
 	 * @return the instructor's unity id.
 	 */
 	public String getInstructorId() {
 		return instructorId;
 	}
-	
+
 	/**
 	 * Set Instrucctor's unity id.
-	 * @param instructorId the new unity id to set.
+	 * 
+	 * @param instructorId
+	 *            the new unity id to set.
 	 */
 	public void setInstructorId(String instructorId) {
 		if (instructorId == null || instructorId.equals("")) {
@@ -231,9 +248,10 @@ if (!title.equals(other.title))
 		}
 		this.instructorId = instructorId;
 	}
-	
+
 	/**
 	 * Return the short display array.
+	 * 
 	 * @return return short display array
 	 */
 	public String[] getShortDisplayArray() {
@@ -244,9 +262,10 @@ if (!title.equals(other.title))
 		da[3] = getMeetingString();
 		return da;
 	}
-	
+
 	/**
-	 * Return the long display array 
+	 * Return the long display array
+	 * 
 	 * @return return long display array
 	 */
 	public String[] getLongDisplayArray() {
@@ -259,15 +278,17 @@ if (!title.equals(other.title))
 		da[5] = getMeetingString();
 		da[6] = "";
 		return da;
-		
+
 	}
-	
+
 	/**
-	 * Check if the activity is duplicate 
-	 * @param activity activity to be checked
+	 * Check if the activity is duplicate
+	 * 
+	 * @param activity
+	 *            activity to be checked
 	 * @return true if two are the same, false otherwise
 	 */
-	public boolean isDuplicate(Activity activity){
+	public boolean isDuplicate(Activity activity) {
 		if (this == activity)
 			return true;
 		if (activity == null)
@@ -279,54 +300,39 @@ if (!title.equals(other.title))
 			return false;
 		if (endTime != other.endTime)
 			return false;
-		if (instructorId == null) {
-			if (other.instructorId != null)
-				return false;
-		} else if (!instructorId.equals(other.instructorId))
+		if (!instructorId.equals(other.instructorId))
 			return false;
-		if (meetingDays == null) {
-			if (other.meetingDays != null)
-				return false;
-		} else if (!meetingDays.equals(other.meetingDays))
+		if (!meetingDays.equals(other.meetingDays))
 			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
+		if (!name.equals(other.name))
 			return false;
-		if (section == null) {
-			if (other.section != null)
-				return false;
-		} else if (!section.equals(other.section))
+		if (!section.equals(other.section))
 			return false;
 		if (startTime != other.startTime)
 			return false;
-		if (title == null) {
-			if (other.title != null)
-				return false;
-		} else if (!title.equals(other.title))
+		if (!title.equals(other.title))
 			return false;
 		return true;
 	}
-	
+
 	/**
-	 * Compares this course to another course 
-	 * @return -1 if this course is before the other, 0 if they are
-	 * 		equal, 1 if it is after
+	 * Compares this course to another course
+	 * 
+	 * @return -1 if this course is before the other, 0 if they are equal, 1 if
+	 *         it is after
 	 */
 	public int compareTo(Course o) {
 		String c1 = getName();
 		String c2 = o.getName();
 		String s1 = getSection();
 		String s2 = o.getSection();
-	
-		if (c1.compareTo(c2) == 0){
+
+		if (c1.compareTo(c2) == 0) {
 			return s1.compareTo(s2);
 		} else {
 			return c1.compareTo(c2);
 		}
-		
-	}
 
+	}
 
 }
