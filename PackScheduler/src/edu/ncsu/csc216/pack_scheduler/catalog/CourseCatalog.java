@@ -71,7 +71,7 @@ public class CourseCatalog {
 	 * @param endTime when the course ends
 	 * @return true if course can be added and isn't a duplicate, false otherwise
 	 */
-	public boolean addCoursesToCatalog(String name, String title, String section, int credits, String instructorId, String meetingDays, int startTime, int endTime) {
+	public boolean addCourseToCatalog(String name, String title, String section, int credits, String instructorId, String meetingDays, int startTime, int endTime) {
 		Course course = new Course(name, title, section, credits, instructorId, meetingDays, startTime, endTime);
 		
 		for (int i = 0; i < catalog.size(); i++) {
@@ -123,7 +123,10 @@ public class CourseCatalog {
 	 * @return the 2d array with info on all of the courses in the catalog
 	 */
 	public String[][] getCourseCatalog() {
-		String[][] catalogArray = new String[catalog.size() - 1][4];
+		/*if (catalog == null) {
+			return new String[0][0];
+		}*/
+		String[][] catalogArray = new String[catalog.size()][4];
 		for (int i = 0; i < catalog.size(); i++) {
 			catalogArray[i] = catalog.get(i).getShortDisplayArray();
 		}
@@ -131,7 +134,7 @@ public class CourseCatalog {
 	}
 	
 	/**
-	 * saves the catalog course records to the given file. Any IOExceptions are caught and an IllegalArgumentException is thrown to the client.
+	 * Saves the catalog course records to the given file. Any IOExceptions are caught and an IllegalArgumentException is thrown to the client.
 	 * @param fileName name of the file to write to
 	 */
 	public void saveCourseCatalog(String fileName) {
