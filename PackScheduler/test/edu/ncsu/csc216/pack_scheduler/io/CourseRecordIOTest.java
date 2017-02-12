@@ -8,12 +8,12 @@ import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import edu.ncsu.csc216.collections.list.SortedList;
 import edu.ncsu.csc216.pack_scheduler.course.Course;
 import edu.ncsu.csc216.pack_scheduler.io.CourseRecordIO;
 
@@ -64,7 +64,7 @@ public class CourseRecordIOTest {
 	@Test
 	public void testReadValidCourseRecords() {
 		try {
-			ArrayList<Course> courses = CourseRecordIO.readCourseRecords(validTestFile);
+			SortedList<Course> courses = CourseRecordIO.readCourseRecords(validTestFile);
 			assertEquals(8, courses.size());
 			
 			for (int i = 0; i < validCourses.length; i++) {
@@ -80,7 +80,7 @@ public class CourseRecordIOTest {
 	 */
 	@Test
 	public void testReadInvalidCourseRecords() {
-		ArrayList<Course> courses;
+		SortedList<Course> courses;
 		try {
 			courses = CourseRecordIO.readCourseRecords(invalidTestFile);
 			assertEquals(0, courses.size());
@@ -94,7 +94,7 @@ public class CourseRecordIOTest {
 	 */
 	@Test
 	public void testWriteCourseRecords() {
-		ArrayList<Course> courses = new ArrayList<Course>();
+		SortedList<Course> courses = new SortedList<Course>();
 		courses.add(new Course("CSC116", "Intro to Programming - Java", "003", 3, "spbalik", "MW", 1250, 1440));
 		courses.add(new Course("CSC216", "Programming Concepts - Java", "001", 4, "sesmith5", "MW", 1330, 1445));
 		courses.add(new Course("CSC216", "Programming Concepts - Java", "601", 4, "jep", "A"));

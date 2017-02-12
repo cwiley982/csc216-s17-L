@@ -6,13 +6,9 @@ package edu.ncsu.csc216.pack_scheduler.catalog;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import edu.ncsu.csc216.collections.list.SortedList;
-import edu.ncsu.csc216.pack_scheduler.course.Activity;
-import edu.ncsu.csc216.pack_scheduler.course.ConflictException;
 import edu.ncsu.csc216.pack_scheduler.course.Course;
-import edu.ncsu.csc216.pack_scheduler.course.Event;
 import edu.ncsu.csc216.pack_scheduler.io.CourseRecordIO;
 
 /**
@@ -47,11 +43,7 @@ public class CourseCatalog {
 	 */
 	public void loadCoursesFromFile(String fileName) {
 		try {
-			ArrayList<Course> list = null;
-			list = CourseRecordIO.readCourseRecords(fileName);
-			for (int i = 0; i < list.size(); i++) {
-				catalog.add(list.get(i));
-			}
+			catalog = CourseRecordIO.readCourseRecords(fileName);
 		} catch (FileNotFoundException e) {
 			throw new IllegalArgumentException();
 		}
@@ -139,11 +131,8 @@ public class CourseCatalog {
 	 */
 	public void saveCourseCatalog(String fileName) {
 		try {
-			ArrayList<Course> catalog2 = new ArrayList<Course>();
-			for (int i = 0; i < catalog.size(); i++ ){
-				catalog2.add(catalog.get(i));
-			}
-			CourseRecordIO.writeCourseRecords(fileName, catalog2);
+			
+			CourseRecordIO.writeCourseRecords(fileName, catalog);
 		} catch (IOException e) {
 			throw new IllegalArgumentException();
 		}

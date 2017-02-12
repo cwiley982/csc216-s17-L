@@ -4,11 +4,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+import edu.ncsu.csc216.collections.list.SortedList;
 import edu.ncsu.csc216.pack_scheduler.course.Course;
 
 /**
@@ -26,9 +26,9 @@ public class CourseRecordIO {
      * @return a list of valid Courses
      * @throws FileNotFoundException if the file cannot be found or read
      */
-	public static ArrayList<Course> readCourseRecords(String fileName) throws FileNotFoundException {
+	public static SortedList<Course> readCourseRecords(String fileName) throws FileNotFoundException {
 	    Scanner fileReader = new Scanner(new File(fileName));
-	    ArrayList<Course> courses = new ArrayList<Course>();
+	    SortedList<Course> courses = new SortedList<Course>();
 	    while (fileReader.hasNextLine()) {
 	        try {
 	            Course course = readCourse(fileReader.nextLine());
@@ -62,7 +62,7 @@ public class CourseRecordIO {
      * @param courses course catalog
      * @throws IOException if file can't be written to
      */
-    public static void writeCourseRecords(String fileName, ArrayList<Course> courses) throws IOException {
+    public static void writeCourseRecords(String fileName, SortedList<Course> courses) throws IOException {
     	PrintStream fileWriter = new PrintStream(new File(fileName));
 
     	for (int i = 0; i < courses.size(); i++) {
@@ -105,12 +105,6 @@ public class CourseRecordIO {
     	   	
     	return c;
     	
-    
-
-    }
-    
-    
-    
-    
+    }  
 
 }
