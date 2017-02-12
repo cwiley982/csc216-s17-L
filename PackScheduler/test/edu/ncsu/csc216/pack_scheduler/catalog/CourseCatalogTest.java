@@ -60,7 +60,7 @@ public class CourseCatalogTest {
 		try {
 			CourseCatalog catalog = new CourseCatalog();
 			catalog.loadCoursesFromFile(invalidTestFile);
-			assertEquals(1, catalog.getCourseCatalog().length);
+			assertEquals(0, catalog.getCourseCatalog().length);
 		} catch (IllegalArgumentException e) {
 			fail();
 		}
@@ -81,7 +81,7 @@ public class CourseCatalogTest {
 	public void testAddCourseToCatalog() {
 		CourseCatalog catalog = new CourseCatalog();
 		catalog.addCourseToCatalog(NAME, TITLE, SECTION, CREDITS, INSTRUCTOR_ID, MEETING_DAYS, START_TIME, END_TIME);
-		assertEquals(catalog.getCourseCatalog().length, 1);
+		assertEquals(1, catalog.getCourseCatalog().length);
 	}
 	
 	/**
@@ -93,7 +93,7 @@ public class CourseCatalogTest {
 		catalog.addCourseToCatalog(NAME, TITLE, SECTION, CREDITS, INSTRUCTOR_ID, MEETING_DAYS, START_TIME, END_TIME);
 		catalog.addCourseToCatalog(NAME, TITLE, "002", 4, "jtking", "MW", 1330, 1445);
 		catalog.removeCourseFromCatalog(NAME, "002");
-		assertEquals(catalog.getCourseCatalog().length, 1);
+		assertEquals(1, catalog.getCourseCatalog().length);
 	}
 	
 	/**
@@ -103,9 +103,9 @@ public class CourseCatalogTest {
 	public void testNewCourseCatalog() {
 		CourseCatalog catalog = new CourseCatalog();
 		catalog.addCourseToCatalog(NAME, TITLE, SECTION, CREDITS, INSTRUCTOR_ID, MEETING_DAYS, START_TIME, END_TIME);
-		assertEquals(catalog.getCourseCatalog().length, 1);
+		assertEquals(1, catalog.getCourseCatalog().length);
 		catalog.newCourseCatalog();
-		assertEquals(catalog.getCourseCatalog().length, 0);
+		assertEquals(0, catalog.getCourseCatalog().length);
 	}
 	
 	/**
@@ -136,8 +136,8 @@ public class CourseCatalogTest {
 		expectedArray[0] = new String[] {"CSC116", "001", "Intro to Programming - Java", "MW 9:10AM-11:00AM"};
 		expectedArray[1] = new String[] {"CSC116", "002", "Intro to Programming - Java", "MW 11:20AM-1:10PM"};
 		expectedArray[2] = new String[] {"CSC116", "003", "Intro to Programming - Java", "TH 11:20AM-1:10PM"};
-		assertEquals(catalog.getCourseCatalog()[0][1], expectedArray[0][1]);
-		assertEquals(catalog.getCourseCatalog()[2][3], expectedArray[2][3]);
+		assertEquals(expectedArray[0][1], catalog.getCourseCatalog()[0][1]);
+		assertEquals(expectedArray[2][3], catalog.getCourseCatalog()[2][3]);
 	}
 	
 	/**
@@ -149,7 +149,7 @@ public class CourseCatalogTest {
 		catalog.addCourseToCatalog("CSC116", "Intro to Programming - Java", "001", 3, "jdyoung2", "MW", 910, 1100);
 		catalog.addCourseToCatalog("CSC116", "Intro to Programming - Java", "002", 3, "spbalik", "MW", 1120, 1310);
 		catalog.addCourseToCatalog("CSC116", "Intro to Programming - Java", "003", 3, "tbdimitr", "TH", 1120, 1310);
-		assertEquals(catalog.getCourseCatalog().length, 3);
+		assertEquals(3, catalog.getCourseCatalog().length);
 		catalog.saveCourseCatalog("test-files/actual_saved_course_catalog.txt");
 		checkFiles("test-files/actual_saved_course_catalog.txt", expectedCatalog);
 	}

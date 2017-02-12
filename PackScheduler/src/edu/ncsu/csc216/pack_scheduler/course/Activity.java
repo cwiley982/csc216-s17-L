@@ -98,6 +98,12 @@ public abstract class Activity implements Conflict {
 		if (meetingDays.contains("A") && meetingDays.length() > 1) {
 			throw new IllegalArgumentException();
 		}
+		if (meetingDays.equals("A") && startTime > 0){
+			throw new IllegalArgumentException("Invalid meeting times");
+    	}
+    	if (meetingDays.equals("A") && endTime > 0){
+    		throw new IllegalArgumentException("Invalid meeting times");
+    	}
 		this.meetingDays = meetingDays;
 	}
 

@@ -71,6 +71,7 @@ public class CourseCatalog {
 				return false;
 			}
 		}
+
 		
 		catalog.add(course);
 		return true;
@@ -115,9 +116,6 @@ public class CourseCatalog {
 	 * @return the 2d array with info on all of the courses in the catalog
 	 */
 	public String[][] getCourseCatalog() {
-		if (catalog == null) {
-			return new String[0][0];
-		}
 		String[][] catalogArray = new String[catalog.size()][4];
 		for (int i = 0; i < catalog.size(); i++) {
 			catalogArray[i] = catalog.get(i).getShortDisplayArray();

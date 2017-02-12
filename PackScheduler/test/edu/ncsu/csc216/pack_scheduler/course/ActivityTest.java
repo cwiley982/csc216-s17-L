@@ -48,8 +48,8 @@ public class ActivityTest {
 			assertEquals("TH 1:30PM-2:45PM", a2.getMeetingString());
 		}
 
-		a1.setMeetingDays("A");
-		a1.setActivityTime(1445, 1530);
+		a1.setActivityTime(0, 0);
+		a1.setMeetingDays("A");		
 		try {
 			a1.checkConflict(a2);
 			assertEquals("Arranged", a1.getMeetingString());
@@ -70,7 +70,8 @@ public class ActivityTest {
 			assertEquals("TH 1:29PM-2:30PM", a1.getMeetingString());
 			assertEquals("TH 1:30PM-2:45PM", a2.getMeetingString());
 		}
-
+		
+		a2.setActivityTime(0, 0);
 		a2.setMeetingDays("A");
 		try {
 			a1.checkConflict(a2);

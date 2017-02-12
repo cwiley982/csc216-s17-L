@@ -48,9 +48,9 @@ public class CourseRecordIO {
 	        	// skip
 	        } 
 	    }
-	    if (courses.get(0) == null) {
+/*	    if (courses.get(0) == null) {
 			courses.remove(0);
-		}
+		}*/
 	    
 	    fileReader.close();
 	    return courses;
@@ -87,6 +87,11 @@ public class CourseRecordIO {
 			String date = info.next();
 			int startTime = 0;
 			int endTime = 0;
+			
+			if (date.equals("A") && info.hasNextInt()) {
+				info.close();
+				throw new IllegalArgumentException();
+			}
 			
 			if (date.equals("A")) {
 				while (info.hasNext()) {
