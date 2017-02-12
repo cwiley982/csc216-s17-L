@@ -317,7 +317,7 @@ public class Course extends Activity implements Comparable<Course> {
 
 	/**
 	 * Compares this course to another course
-	 * 
+	 * @param o the object to be compared to
 	 * @return -1 if this course is before the other, 0 if they are equal, 1 if
 	 *         it is after
 	 */
