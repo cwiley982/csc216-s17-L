@@ -60,9 +60,17 @@ public class CourseCatalogTest {
 		try {
 			CourseCatalog catalog = new CourseCatalog();
 			catalog.loadCoursesFromFile(invalidTestFile);
-			assertEquals(catalog.getCourseCatalog().length, 0);
+			assertEquals(1, catalog.getCourseCatalog().length);
 		} catch (IllegalArgumentException e) {
 			fail();
+		}
+		
+		try {
+			CourseCatalog catalog = new CourseCatalog();
+			catalog.loadCoursesFromFile("does NOT exist");
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals("Unable to read file does NOT exist", e.getMessage());
 		}
 	}
 

@@ -83,7 +83,7 @@ public class CourseRecordIOTest {
 		SortedList<Course> courses;
 		try {
 			courses = CourseRecordIO.readCourseRecords(invalidTestFile);
-			assertEquals(0, courses.size());
+			assertEquals(1, courses.size());
 		} catch (FileNotFoundException e) {
 			fail("Unexpected FileNotFoundException");
 		}
