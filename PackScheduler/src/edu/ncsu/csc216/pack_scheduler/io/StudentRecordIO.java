@@ -19,8 +19,6 @@ import edu.ncsu.csc216.pack_scheduler.user.Student;
  * @author Spencer Otten
  */
 public class StudentRecordIO {
-
-
 	/**
 	 * Reads a record of students and lists students in a sorted list
 	 * 

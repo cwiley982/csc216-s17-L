@@ -16,8 +16,11 @@ import edu.ncsu.csc216.pack_scheduler.course.Course;
  * 
  * @author Kaiwen Li
  */
-public class CourseRecordIO {
 
+public class CourseRecordIO {
+	public CourseRecordIO(){
+		//skip
+	}
     /**
      * Reads course records from a file and generates a list of valid Courses.  Any invalid
      * Courses are ignored.  If the file to read cannot be found or the permissions are incorrect

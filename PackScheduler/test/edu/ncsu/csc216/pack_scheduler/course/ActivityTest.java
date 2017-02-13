@@ -302,6 +302,7 @@ public class ActivityTest {
 		Activity a1 = new Course("CSC216", "Programming Concepts - Java", "001", 4, "sesmith5", "MW", 1200, 1201);
 		Activity a2 = new Course("CSC216", "Programming Concepts - Java", "001", 4, "sesmith5", "MW", 1200, 1201);
 		assertTrue(a1.equals(a2));
+		assertFalse(a1.equals("a"));
 	}
 	
 
