@@ -95,7 +95,7 @@ public class CourseRecordIOTest {
 	@Test
 	public void testWriteCourseRecords() {
 		CourseRecordIO nothing = new CourseRecordIO();
-		nothing.equals("a");
+		nothing.equals(nothing);
 		SortedList<Course> courses = new SortedList<Course>();
 		courses.add(new Course("CSC116", "Intro to Programming - Java", "003", 3, "spbalik", "MW", 1250, 1440));
 		courses.add(new Course("CSC216", "Programming Concepts - Java", "001", 4, "sesmith5", "MW", 1330, 1445));

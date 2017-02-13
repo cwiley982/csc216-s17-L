@@ -18,6 +18,9 @@ import edu.ncsu.csc216.pack_scheduler.course.Course;
  */
 
 public class CourseRecordIO {
+	/**
+	 * Coverage purpose
+	 */
 	public CourseRecordIO(){
 		//skip
 	}
